@@ -6,6 +6,17 @@ const router = express.Router();
  * GET route template
  */
 router.get('/', (req, res) => {
+    if(req.isAuthenticated()){
+        console.log('req.user', req.user);
+        pool.query('SELECT * FROM family_member;')
+        .then(result => {
+            res.send(result.rows)
+        }).catch(error => {
+            console.log('this is error in router.get', error);
+        });
+    }else{
+        res.sendStatus(403);
+    }
     
 });
 
