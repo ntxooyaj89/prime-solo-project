@@ -15,74 +15,85 @@ class FamilyProfile extends Component {
         }
     }
 
-    
 
-    componentDidMount(){
+
+    componentDidMount() {
         this.getFamily();
     }
 
     getFamily = () => {
 
-        const action = {type: 'GET_FAMILY' };
+        const action = { type: 'GET_FAMILY' };
         this.props.dispatch(action);
     }
 
-  
-    render(){
+    moreInfo = () => {
+        console.log('this is more info');
         
-        return(
+    }
+
+
+    render() {
+
+        return (
             <div>
                 {/* {JSON.stringify(this.props.reduxStore.familyReducer.familyMember)} */}
                 <div className="classes-card">
-               
+
                     {this.props.reduxStore.familyReducer.familyMember.map(member => (
-                      
+
                         <div key={member.id}>
                             <Card className={this.state.card}>
-                          <img className="imageCard" src={member.image} alt="images of family"></img>
+                                <img className="imageCard" src={member.image} alt="images of family"></img>
                                 <div className="card"  >
-                                    {member.first_name}
-                                    {member.last_name}
-                                    {member.date_of_birth}
-                                    {member.gender}
-                                    {member.description}
-                            </div>
-                            <button>update member</button>
-                            </Card>
-                        </div> 
-                        
-                                   
-                                 
-                                
-                    ))}
-                    </div>
-                    </div>
-                    
-            
+                                    <ul>
+                                        <li>{member.first_name}</li>
+                                        <li>{member.last_name}</li>
+                                        <li>{member.date_of_birth}</li>
+                                        <li>{member.gender}</li>
+                                        <li>{member.last_name}</li>
+                                        <li>{member.description}</li>
+                                        <li><button>update profile</button></li>
 
-           
-            
-              
-              
-               
-                
-             
-           
+                                    </ul>
+
+
+                                </div>
+                            </Card>
+                        </div>
+
+
+
+
+                    ))}
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
         );
     }
 
-   
+
 }
 
 const mapStateToProps = reduxStore => ({
     reduxStore: reduxStore
-            })
-            
-                
-            
-            
-            
-            
+})
+
+
+
+
+
+
 export default connect(mapStateToProps)(FamilyProfile);
-            
-   {/* <Card className={this.state.card}> */}
+
+{/* <Card className={this.state.card}> */ }
