@@ -2,16 +2,20 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './UserProfile.css';
 import axios from 'axios';
+import Card from '@material-ui/core/Card';
 
 
 class UserProfile extends Component {
 
-    // constructor(props){
-    //     super(props);
-    //     this.state = {
-    //        cardMax: {maxWidth: 20,}
-    //     }
-    // }
+    constructor(props) {
+        super(props);
+        this.state = {
+            card: { maxWidth: 20, }
+
+        }
+    }
+
+    
 
     componentDidMount(){
         this.getFamily();
@@ -24,40 +28,48 @@ class UserProfile extends Component {
     }
 
   
-        render(){
+    render(){
         
         return(
             <div>
                 {/* {JSON.stringify(this.props.reduxStore.familyReducer.familyMember)} */}
-                <div>
-                    {this.props.reduxStore.familyReducer.familyMember.map(member => (
-                        <div key={member.id}>
-                            <div><img className="imageCard" src={member.image} alt="images of family"></img></div>
-                            <div>
-                                <ul>
-                                    <li>{member.first_name}</li>
-                                    <li>{member.last_name}</li>
-                                    <li>{member.date_of_birth}</li>
-                                    <li>{member.gender}</li>
-                                    <li>{member.description}</li>
-
-                                </ul>
-                                
-                                
-                            </div>
-                             
-                            
-                        </div>
-                    ))}
-                </div>
-            </div>
+                <div className="classes-card">
                
+                    {this.props.reduxStore.familyReducer.familyMember.map(member => (
+                      
+                        <div key={member.id}>
+                            <Card className={this.state.card}>
+                          <div><img className="imageCard" src={member.image} alt="images of family"></img></div>
+                            <div>
+                         
+                                   
+                                    {member.first_name}
+                                    {member.last_name}
+                                    {member.date_of_birth}
+                                    {member.gender}
+                                    {member.description}
+                            </div>
+                            </Card>
+                        </div> 
+                        
+                                   
+                                 
+                                
+                    ))}
+                    </div>
+                    </div>
+                    
+            
+
+           
+            
+              
               
                
                 
              
            
-        )
+        );
     }
 
    
@@ -65,11 +77,13 @@ class UserProfile extends Component {
 
 const mapStateToProps = reduxStore => ({
     reduxStore: reduxStore
-})
-
-    
-
-
-
-
+            })
+            
+                
+            
+            
+            
+            
 export default connect(mapStateToProps)(UserProfile);
+            
+   {/* <Card className={this.state.card}> */}
