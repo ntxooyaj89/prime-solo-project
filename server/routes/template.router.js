@@ -9,7 +9,8 @@ router.get('/', (req, res) => {
     if(req.isAuthenticated()){
         console.log('req.user', req.user);
         pool.query(`SELECT * FROM "family" JOIN "members"
-                    ON "members"."family_id" = family."id";`)
+                    ON "members"."family_id" = family."id"
+                    WHERE family."id" = 1;`)
         .then(result => {
             res.send(result.rows)
         }).catch(error => {
@@ -23,7 +24,8 @@ router.get('/', (req, res) => {
 
 router.get('/family', (req, res) => {
     const queryText = `SELECT * FROM "family" JOIN "members"
-                       ON "members"."family_id" = family."id";`;
+                        ON "members"."family_id" = family."id"
+                        WHERE family."id" = 2`;
     pool.query(queryText)
     .then(result => {
         res.send(result.rows);

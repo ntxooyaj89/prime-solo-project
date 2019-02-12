@@ -53,6 +53,7 @@ class FamilyProfile extends Component {
                                         <li>{member.gender}</li>
                                         <li>{member.last_name}</li>
                                         <li>{member.description}</li>
+                                        <li>{member.family_name}</li>
                                         <li><button>Delete member</button></li>
 
                                     </ul>
