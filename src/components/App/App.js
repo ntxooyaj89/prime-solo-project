@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 
 import './App.css';
 import FamilyProfile from '../FamilyProfile/FamilyProfile';
+import AddNewMember from '../AddNewMember/AddNewMember';
 
 class App extends Component {
   componentDidMount () {
@@ -60,6 +61,12 @@ class App extends Component {
               exact
               path="/family-profile"
               component={FamilyProfile}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/add-member"
+              component={AddNewMember}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />

@@ -14,8 +14,20 @@ function* getFamily () {
     }
 }
 
+function* familyName() {
+    try {
+        const response = yield axios.get('/api/template/family');
+        const nextAction = { type: 'SET_FAMILY_NAME', payload: response.data }
+        yield put(nextAction);
+
+    } catch (error) {
+        console.log('saga family get request failed', error);
+    }
+}
+
 function* familySaga(){
     yield takeEvery('GET_FAMILY', getFamily);
+    yield takeEvery('GET_FAMILYNAME', familyName);
 }
 
 export default familySaga;

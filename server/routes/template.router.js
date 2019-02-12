@@ -8,7 +8,8 @@ const router = express.Router();
 router.get('/', (req, res) => {
     if(req.isAuthenticated()){
         console.log('req.user', req.user);
-        pool.query('SELECT * FROM members;')
+        pool.query(`SELECT * FROM "family" JOIN "members"
+                    ON "members"."family_id" = family."id";`)
         .then(result => {
             res.send(result.rows)
         }).catch(error => {
@@ -20,6 +21,18 @@ router.get('/', (req, res) => {
     
 });
 
+router.get('/family', (req, res) => {
+    const queryText = `SELECT * FROM "family" JOIN "members"
+                       ON "members"."family_id" = family."id";`;
+    pool.query(queryText)
+    .then(result => {
+        res.send(result.rows);
+    }).catch(error =>{
+        console.log('there is an error in get family', error);
+        res.sendStatus(500);
+    })
+})
+
 /**
  * POST route template
  */
@@ -28,3 +41,8 @@ router.post('/', (req, res) => {
 });
 
 module.exports = router;
+
+`SELECT * FROM "family" JOIN "members"
+ON "members"."family_id" = family."id"; `
+
+    // `SELECT * FROM "members";`
