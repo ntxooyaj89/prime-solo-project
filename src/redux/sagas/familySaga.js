@@ -5,7 +5,7 @@ import { put, takeEvery } from 'redux-saga/effects';
 
 function* getFamily () {
     try{
-        const response = yield axios.get('/api/template');
+        const response = yield axios.get('/api/template/yang');
         const nextAction = { type: 'SET_FAMILY', payload: response.data}
         yield put(nextAction);
 
@@ -16,7 +16,7 @@ function* getFamily () {
 
 function* familyName() {
     try {
-        const response = yield axios.get('/api/template/family');
+        const response = yield axios.get('/api/template/chang');
         const nextAction = { type: 'SET_FAMILY_NAME', payload: response.data }
         yield put(nextAction);
 

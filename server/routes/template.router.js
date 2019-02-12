@@ -5,7 +5,7 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/', (req, res) => {
+router.get('/yang', (req, res) => {
     if(req.isAuthenticated()){
         console.log('req.user', req.user);
         pool.query(`SELECT * FROM "family" JOIN "members"
@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
     
 });
 
-router.get('/family', (req, res) => {
+router.get('/chang', (req, res) => {
     const queryText = `SELECT * FROM "family" JOIN "members"
                         ON "members"."family_id" = family."id"
                         WHERE family."id" = 2`;
