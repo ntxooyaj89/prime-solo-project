@@ -32,13 +32,17 @@ class UserProfile extends Component {
                 <div>
                     {this.props.reduxStore.familyReducer.familyMember.map(member => (
                         <div key={member.id}>
-                            <div><img className="imageCard" src={member.image}></img></div>
+                            <div><img className="imageCard" src={member.image} alt="images of family"></img></div>
                             <div>
-                                {member.first_name}
-                                {member.last_name}
-                                {member.date_of_birth}
-                                {member.gender}
-                                {member.description} 
+                                <ul>
+                                    <li>{member.first_name}</li>
+                                    <li>{member.last_name}</li>
+                                    <li>{member.date_of_birth}</li>
+                                    <li>{member.gender}</li>
+                                    <li>{member.description}</li>
+
+                                </ul>
+                                
                                 
                             </div>
                              
