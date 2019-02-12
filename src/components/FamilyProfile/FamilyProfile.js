@@ -32,8 +32,18 @@ class FamilyProfile extends Component {
         
     }
 
+    removeMember = () => {
+    
+        const action = {
+            type: 'DELETE_MEMBER',
+            payload: {memberId: this.props.member.id}
+        }
+        this.props.dispatch(action);
+    }
+
 
     render() {
+        // console.log('this is member id', this.props.memeber.id)
 
         return (
             <div>
@@ -54,8 +64,7 @@ class FamilyProfile extends Component {
                                         <li>{member.last_name}</li>
                                         <li>{member.description}</li>
                                         <li>{member.family_name}</li>
-                                        <li><button>Delete member</button></li>
-
+                                        <li><button onClick={this.removeMember}>Delete member</button></li>
                                     </ul>
 
 

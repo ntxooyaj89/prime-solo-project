@@ -25,9 +25,23 @@ function* familyName() {
     }
 }
 
+function* deleteMember(action) {
+    console.log('this is deleteMember saga');
+    try{
+        const memberId = action.payload.memberId
+        console.log(memberId);
+        yield axios.delete(`/api/template/${memberId}`);
+        const nextAction = {type: 'GET_FAMILY'}
+        yield put(nextAction)
+    }catch(error){
+        console.log('error in delete saga', error);
+    }
+}
+
 function* familySaga(){
     yield takeEvery('GET_FAMILY', getFamily);
     yield takeEvery('GET_FAMILYNAME', familyName);
+    yield takeEvery('DELETE_MEMBER', deleteMember);
 }
 
 export default familySaga;

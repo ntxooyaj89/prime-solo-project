@@ -35,6 +35,18 @@ router.get('/chang', (req, res) => {
     })
 })
 
+router.delete('/:id', (req, res) => {
+    console.log('this is delete', req.params);
+    const queryText = 'DELETE FROM "members" WHERE id =$1';
+    pool.query(queryText, [req.params.id])
+    .then(()=> {res.sendStatus(200); })
+    .catch((err) => {
+        console.log('there is an error in delete member', err);
+        res.sendStatus(500);
+    });
+});
+
+
 /**
  * POST route template
  */
