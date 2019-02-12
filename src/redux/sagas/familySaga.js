@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { put, takeEvery } from 'redux-saga/effects';
-import { type } from 'os';
+
 
 
 function* getFamily () {
