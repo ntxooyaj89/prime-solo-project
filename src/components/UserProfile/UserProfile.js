@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import './UserProfile.css';
 import axios from 'axios';
+
 
 class UserProfile extends Component {
 
-    constructor(){
-        super();
-        this.state = {
-            familyList: [],
-        }
-    }
+    // constructor(props){
+    //     super(props);
+    //     this.state = {
+    //        cardMax: {maxWidth: 20,}
+    //     }
+    // }
 
     componentDidMount(){
         this.getFamily();
@@ -30,7 +32,7 @@ class UserProfile extends Component {
                 <div>
                     {this.props.reduxStore.familyReducer.familyMember.map(member => (
                         <div key={member.id}>
-                            <div><img src={member.image}></img></div>
+                            <div><img className="imageCard" src={member.image}></img></div>
                             <ul>
                                 <li>{member.first_name}</li>
                                 <li>{member.last_name}</li>
