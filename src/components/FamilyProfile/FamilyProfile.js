@@ -39,10 +39,8 @@ class FamilyProfile extends Component {
                       
                         <div key={member.id}>
                             <Card className={this.state.card}>
-                          <div><img className="imageCard" src={member.image} alt="images of family"></img></div>
-                            <div>
-                         
-                                   
+                          <img className="imageCard" src={member.image} alt="images of family"></img>
+                                <div className="card"  >
                                     {member.first_name}
                                     {member.last_name}
                                     {member.date_of_birth}

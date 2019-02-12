@@ -1,11 +1,15 @@
 .imageCard{
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
+    border-style: ridge;
+    float: center;
+    /* display: 'inline-block', */
+}
+
+.card{
+    width: 150px;
+    height: 150px;
     border-style: ridge;
     float: center;
 
-    
-    
-   
 }
-

@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/', (req, res) => {
     if(req.isAuthenticated()){
         console.log('req.user', req.user);
-        pool.query('SELECT * FROM family_member;')
+        pool.query('SELECT * FROM members;')
         .then(result => {
             res.send(result.rows)
         }).catch(error => {
