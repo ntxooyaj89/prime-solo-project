@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './UserProfile.css';
+import './FamilyProfile.css';
 import axios from 'axios';
 import Card from '@material-ui/core/Card';
 
 
-class UserProfile extends Component {
+class FamilyProfile extends Component {
 
     constructor(props) {
         super(props);
@@ -49,6 +49,7 @@ class UserProfile extends Component {
                                     {member.gender}
                                     {member.description}
                             </div>
+                            <button>update member</button>
                             </Card>
                         </div> 
                         
@@ -84,6 +85,6 @@ const mapStateToProps = reduxStore => ({
             
             
             
-export default connect(mapStateToProps)(UserProfile);
+export default connect(mapStateToProps)(FamilyProfile);
             
    {/* <Card className={this.state.card}> */}

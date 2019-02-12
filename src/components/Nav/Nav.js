@@ -24,7 +24,7 @@ const Nav = (props) => (
             Info Page
           </Link>
           <LogOutButton className="nav-link"/>
-          <Link className="nav-link" to="/user-profile">User Profile</Link>
+          <Link className="nav-link" to="/family-profile">Family Profile</Link>
         </>
       )}
       {/* Always show this link since the about page is not protected */}

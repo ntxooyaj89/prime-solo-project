@@ -18,7 +18,7 @@ import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
 
 import './App.css';
-import UserProfile from '../UserProfile/UserProfile';
+import FamilyProfile from '../FamilyProfile/FamilyProfile';
 
 class App extends Component {
   componentDidMount () {
@@ -58,8 +58,8 @@ class App extends Component {
             />
             <ProtectedRoute
               exact
-              path="/user-profile"
-              component={UserProfile}
+              path="/family-profile"
+              component={FamilyProfile}
             />
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
