@@ -24,8 +24,11 @@ const Nav = (props) => (
             Info Page
           </Link>
           <LogOutButton className="nav-link"/>
-          <Link className="nav-link" to="/family-profile">Family Profile</Link>
+          <Link className="nav-link" to="/family-profile/1">Family Profile</Link>
           <Link className="nav-link" to="/add-member">Add New Member</Link>
+          
+          {/* <Link className="nav-link" to="/family-profile/2">Chang</Link> */}
+          
         </>
       )}
       {/* Always show this link since the about page is not protected */}

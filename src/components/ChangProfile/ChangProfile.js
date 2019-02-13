@@ -11,11 +11,6 @@ class ChangProfile extends Component {
         this.getFamily();
     }
     
-    // this function gets chang family.
-    // getFamilyName = () => {
-    //     const action = { type: 'GET_CHANG_FAMILY' };
-    //     this.props.dispatch(action);
-    // }
 
     getFamily = () => {
 

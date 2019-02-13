@@ -22,22 +22,24 @@ class AddNewMember extends Component {
 
     componentDidMount() {
         // this get the whole member
-        this.getFamily();
+        // this.getFamily();
         // this get just the name of family
         this.getFamilyName();
         
     }
-
+    
+    // this gets the family name
     getFamilyName = () =>{
        const action = {type: 'GET_FAMILY_NAME'};
        this.props.dispatch(action);
     }
 
-    getFamily = () => {
+   // this gets the family members
+    // getFamily = () => {
 
-        const action = { type: 'GET_FAMILY' };
-        this.props.dispatch(action);
-    }
+    //     const action = { type: 'GET_FAMILY', payload: { id: this.props.match.params.id }  };
+    //     this.props.dispatch(action);
+    // }
 
     handleFirstName = event => {
         console.log('this is handleMemberFirstName');
@@ -48,14 +50,13 @@ class AddNewMember extends Component {
     }
 
     render() {
-
-        // console.log('this is family NAME', this.props.reduxStore.familyReducer.familyMember)
+        
         return (
            
                <div>
-                   {/* this is info from the Chang family. */}
+                  
                 {JSON.stringify(this.props.reduxStore.familyReducer.myFamilyName)}
-             
+               
                 <form onSubmit={this.addNewMember}>
                
                     <input type='text' placeholder="first name" onChange={this.handleFirstName}/>
@@ -64,6 +65,12 @@ class AddNewMember extends Component {
                     <input type='text' placeholder="gender" onChange={this.handleGender}/>
                     <input type='text' placeholder="description" onChange={this.handleDescribtion}/>
                     <input type='text' placeholder="image" onChange={this.handleImage}/>
+                    <select onChange={this.selectFamilyName} >
+                    <option >Slecte family name</option>
+                  
+                    
+                    
+                    </select>
                    
 
                 </form>

@@ -15,14 +15,25 @@ function* getFamily (action) {
 }
 
 // this gets the chang family
-function* changFamily() {
-    try {
-        const response = yield axios.get('/api/template/chang');
-        const nextAction = { type: 'SET_CHANG_FAMILY', payload: response.data }
-        yield put(nextAction);
+// function* changFamily() {
+//     try {
+//         const response = yield axios.get('/api/template/chang');
+//         const nextAction = { type: 'SET_CHANG_FAMILY', payload: response.data }
+//         yield put(nextAction);
 
-    } catch (error) {
-        console.log('saga family get request failed', error);
+//     } catch (error) {
+//         console.log('saga family get request failed', error);
+//     }
+// }
+
+function* getFamilyNames() {
+    try{
+        const familyNameResponse = yield axios.get('/api/template');
+        const nextAction = {type: 'SET_FAMILY_NAME', payload: familyNameResponse.data};
+        // this info will be sent to store in my reducer that have type of 'SET_FAMILY_NAME'
+        yield put(nextAction);
+    }catch(error){
+        console.log('there is error in getFamilyName saga')
     }
 }
 
@@ -43,7 +54,8 @@ function* deleteMember(action) {
 // this is root saga and will be listening to any components that have these type.
 function* familySaga(){
     yield takeEvery('GET_FAMILY', getFamily);
-    yield takeEvery('GET_CHANG_FAMILY', changFamily);
+    // this GET_FAMILY_NAME will get names of family...
+    yield takeEvery('GET_FAMILY_NAME', getFamilyNames);
     yield takeEvery('DELETE_MEMBER', deleteMember);
 }
 

@@ -8,16 +8,18 @@ const familyMember = (state = [], action) =>{
     return state;
 };
 
-// this reducer gets the chang family
-const MyFamilyName = (state = [], action) => {
-    if(action.type === 'SET_CHANG_FAMILY'){
+// this reducer all family_Names from family table
+const myFamilyName = (state = [], action) => {
+    if(action.type === 'SET_FAMILY_NAME'){
         return action.payload;
     }
     return state;
 }
 
+
+
 // this is the combing the reducer so components can refrence when they need these reducer.
 export default combineReducers({
     familyMember,
-    MyFamilyName
+    myFamilyName
 })
