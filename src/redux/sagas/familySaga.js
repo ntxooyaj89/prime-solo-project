@@ -30,9 +30,9 @@ function* changFamily() {
 function* deleteMember(action) {
     console.log('this is deleteMember saga');
     try{
-        const memberId = action.payload.memberId
-        console.log(memberId);
-        yield axios.delete(`/api/template/${memberId}`);
+        // const memberId = action.payload.memberId
+        // console.log(memberId);
+        yield axios.delete(`/api/template/${action.payload.id}`);
         const nextAction = {type: 'GET_FAMILY'}
         yield put(nextAction)
     }catch(error){

@@ -8,14 +8,22 @@ class ChangProfile extends Component {
 
     componentDidMount() {
         // this.getFamily();
-        this.getFamilyName();
+        this.getFamily();
     }
     
     // this function gets chang family.
-    getFamilyName = () => {
-        const action = { type: 'GET_CHANG_FAMILY' };
+    // getFamilyName = () => {
+    //     const action = { type: 'GET_CHANG_FAMILY' };
+    //     this.props.dispatch(action);
+    // }
+
+    getFamily = () => {
+
+        const action = { type: 'GET_FAMILY', payload: { id: this.props.match.params.id } };
         this.props.dispatch(action);
     }
+
+
 
     render(){
         return(

@@ -26,18 +26,18 @@ router.get('/:id', (req, res) => {
 });
 
 // no longer need this 
-router.get('/chang', (req, res) => {
-    const queryText = `SELECT * FROM "family" JOIN "members"
-                        ON "members"."family_id" = family."id"
-                        WHERE family."id" = 2`;
-    pool.query(queryText)
-    .then(result => {
-        res.send(result.rows);
-    }).catch(error =>{
-        console.log('there is an error in get family', error);
-        res.sendStatus(500);
-    })
-})
+// router.get('/chang', (req, res) => {
+//     const queryText = `SELECT * FROM "family" JOIN "members"
+//                         ON "members"."family_id" = family."id"
+//                         WHERE family."id" = 2`;
+//     pool.query(queryText)
+//     .then(result => {
+//         res.send(result.rows);
+//     }).catch(error =>{
+//         console.log('there is an error in get family', error);
+//         res.sendStatus(500);
+//     })
+// })
 
 router.delete('/:id', (req, res) => {
     console.log('this is delete', req.params);

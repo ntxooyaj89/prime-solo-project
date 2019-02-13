@@ -36,7 +36,7 @@ class FamilyProfile extends Component {
     
         const action = {
             type: 'DELETE_MEMBER',
-            payload: { memberId: this.props.reduxStore.familyReducer.familyMember.id}
+            payload: { id: this.props.match.params.id}
         }
         this.props.dispatch(action);
     }
