@@ -23,7 +23,7 @@ class FamilyProfile extends Component {
 
     getFamily = () => {
 
-        const action = { type: 'GET_FAMILY' };
+        const action = { type: 'GET_FAMILY', payload: {id: this.props.match.params.id} };
         this.props.dispatch(action);
     }
 
@@ -36,14 +36,13 @@ class FamilyProfile extends Component {
     
         const action = {
             type: 'DELETE_MEMBER',
-            payload: {memberId: this.props.member.id}
+            payload: { memberId: this.props.reduxStore.familyReducer.familyMember.id}
         }
         this.props.dispatch(action);
     }
 
 
     render() {
-        // console.log('this is member id', this.props.memeber.id)
 
         return (
             <div>

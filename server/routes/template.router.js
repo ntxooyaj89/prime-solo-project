@@ -5,12 +5,15 @@ const router = express.Router();
 /**
  * GET route template
  */
-router.get('/yang', (req, res) => {
+
+ // this get each family name out from the database.
+router.get('/:id', (req, res) => {
     if(req.isAuthenticated()){
         console.log('req.user', req.user);
         pool.query(`SELECT * FROM "family" JOIN "members"
                     ON "members"."family_id" = family."id"
-                    WHERE family."id" = 1;`)
+                    WHERE family."id" = $1;`,[req.params.id] )
+                    
         .then(result => {
             res.send(result.rows)
         }).catch(error => {
@@ -22,6 +25,7 @@ router.get('/yang', (req, res) => {
     
 });
 
+// no longer need this 
 router.get('/chang', (req, res) => {
     const queryText = `SELECT * FROM "family" JOIN "members"
                         ON "members"."family_id" = family."id"

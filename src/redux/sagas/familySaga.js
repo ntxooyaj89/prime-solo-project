@@ -3,9 +3,9 @@ import { put, takeEvery } from 'redux-saga/effects';
 
 
 // this get the yang family
-function* getFamily () {
+function* getFamily (action) {
     try{
-        const response = yield axios.get('/api/template/yang');
+        const response = yield axios.get(`/api/template/${action.payload.id}`);
         const nextAction = { type: 'SET_FAMILY', payload: response.data}
         yield put(nextAction);
 
