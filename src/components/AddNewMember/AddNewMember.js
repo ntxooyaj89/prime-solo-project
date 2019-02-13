@@ -50,6 +50,7 @@ class AddNewMember extends Component {
         return (
            
                <div>
+                   {/* this is info from the Chang family. */}
                 {JSON.stringify(this.props.reduxStore.familyReducer.MyFamilyName)}
              
                 <form onSubmit={this.addNewMember}>
@@ -60,6 +61,7 @@ class AddNewMember extends Component {
                     <input type='text' placeholder="gender" onChange={this.handleGender}/>
                     <input type='text' placeholder="description" onChange={this.handleDescribtion}/>
                     <input type='text' placeholder="image" onChange={this.handleImage}/>
+                   
 
                 </form>
             </div>
