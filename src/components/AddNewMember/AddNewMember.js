@@ -5,16 +5,18 @@ import { TablePagination } from '@material-ui/core';
 
 class AddNewMember extends Component {
 
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             newMember: {
                 firstName: '',
                 lastName: '',
-                date_of_birth: 0,
+                date_of_birth: '',
                 gender: '',
                 description: '',
-                image: ''
+                image: '',
+                family_id: '',
+              
 
 
             }
@@ -22,9 +24,7 @@ class AddNewMember extends Component {
     }
 
     componentDidMount() {
-        // this get the whole member
-        // this.getFamily();
-        // this get just the name of family
+        
         this.getFamilyName();
 
     }
@@ -44,10 +44,82 @@ class AddNewMember extends Component {
 
     handleFirstName = event => {
         console.log('this is handleMemberFirstName');
+        this.setState({
+            newMember: {
+                ...this.state.newMember,
+                firstName: event.target.value,
+            }
+
+        })
+    }
+
+    handleLastName = event => {
+        console.log('this is handle member last name');
+        this.setState({
+            newMember: {
+                ...this.state.newMember,
+                lastName: event.target.value,
+            }
+
+        })
+    }
+
+    handleBirthday = event => {
+        this.setState({
+            newMember: {
+                ...this.state.newMember,
+                date_of_birth: event.target.value,
+            }
+
+        })
+    }
+
+    handleGender = event => {
+        this.setState({
+            newMember: {
+                ...this.state.newMember,
+                gender: event.target.value,
+            }
+
+        })
+    }
+
+    handleDescribtion = event => {
+        this.setState({
+            newMember: {
+                ...this.state.newMember,
+                description: event.target.value,
+            }
+
+        })
+    }
+
+    handleImage = event => {
+        this.setState({
+            newMember: {
+                ...this.state.newMember,
+                image: event.target.value,
+            }
+
+        })
+    }
+
+    selectFamilyName = (event) => {
+        console.log('this is select family name');
+        this.setState({
+            newMember: {
+                ...this.state.newMember,
+                family_id: event.target.value,
+            }
+
+        })
     }
 
     addNewMember = event => {
         console.log('this is addNewMember');
+        event.preventDefault();
+        const action = { type: 'ADD_MEMBER', payload: this.state.newMember}
+        this.props.dispatch(action);
     }
 
     render() {
@@ -72,6 +144,8 @@ class AddNewMember extends Component {
                             return <option key={i} value={family.id}>{family.family_name}</option>
                         })}
                     </select>
+
+                    <button type="submit">Submit</button>
 
 
                 </form>

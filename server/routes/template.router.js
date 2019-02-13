@@ -70,6 +70,27 @@ router.delete('/:id', (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
+    console.log(req.body);
+    const newMember = req.body;
+    const queryText =`INSERT INTO "members" ("first_name", "last_name", "date_of_birth", "gender",
+                       "description", "image", "family_id")
+                       VALUES ($1, $2, $3, $4, $5, $6, $7);`;
+    const queryValues = [
+        newMember.firstName,
+        newMember.lastName,
+        newMember.date_of_birth,
+        newMember.gender,
+        newMember.description,
+        newMember.image,
+        newMember.family_id
+    ] 
+    pool.query(queryText, queryValues)
+    .then(response => {
+        res.sendStatus(201);
+    }).catch(error => {
+        console.log('there is error in newMember post');
+        res.sendStatus(500);
+    })                  
 
 });
 

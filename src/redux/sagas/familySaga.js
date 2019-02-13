@@ -37,6 +37,18 @@ function* getFamilyNames() {
     }
 }
 
+function* addMember(action){
+    try{
+        yield axios.post('/api/template', action.payload);
+        // call get family to update family with all the existing member
+        const nextAction = {type: 'GET_FAMILY'};
+        yield put(nextAction);
+    }catch (error){
+        console.log('there is error in addMember saga')
+    }
+
+}
+
 // this delete a member
 function* deleteMember(action) {
     console.log('this is deleteMember saga');
@@ -57,6 +69,7 @@ function* familySaga(){
     // this GET_FAMILY_NAME will get names of family...
     yield takeEvery('GET_FAMILY_NAME', getFamilyNames);
     yield takeEvery('DELETE_MEMBER', deleteMember);
+    yield takeEvery('ADD_MEMBER', addMember);
 }
 
 export default familySaga;
