@@ -21,12 +21,15 @@ class AddNewMember extends Component {
     }
 
     componentDidMount() {
+        // this get the whole member
         this.getFamily();
+        // this get just the name of family
         this.getFamilyName();
+        
     }
 
     getFamilyName = () =>{
-       const action = {type: 'GET_FAMILYNAME'};
+       const action = {type: 'GET_FAMILY_NAME'};
        this.props.dispatch(action);
     }
 
@@ -46,12 +49,12 @@ class AddNewMember extends Component {
 
     render() {
 
-        console.log('this is family NAME', this.props.reduxStore.familyReducer.MyFamilyName)
+        // console.log('this is family NAME', this.props.reduxStore.familyReducer.familyMember)
         return (
            
                <div>
                    {/* this is info from the Chang family. */}
-                {JSON.stringify(this.props.reduxStore.familyReducer.MyFamilyName)}
+                {JSON.stringify(this.props.reduxStore.familyReducer.myFamilyName)}
              
                 <form onSubmit={this.addNewMember}>
                

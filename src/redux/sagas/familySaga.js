@@ -2,7 +2,7 @@ import axios from 'axios';
 import { put, takeEvery } from 'redux-saga/effects';
 
 
-
+// this get the yang family
 function* getFamily () {
     try{
         const response = yield axios.get('/api/template/yang');
@@ -14,10 +14,11 @@ function* getFamily () {
     }
 }
 
-function* familyName() {
+// this gets the chang family
+function* changFamily() {
     try {
         const response = yield axios.get('/api/template/chang');
-        const nextAction = { type: 'SET_FAMILY_NAME', payload: response.data }
+        const nextAction = { type: 'SET_CHANG_FAMILY', payload: response.data }
         yield put(nextAction);
 
     } catch (error) {
@@ -25,6 +26,7 @@ function* familyName() {
     }
 }
 
+// this delete a member
 function* deleteMember(action) {
     console.log('this is deleteMember saga');
     try{
@@ -38,9 +40,10 @@ function* deleteMember(action) {
     }
 }
 
+// this is root saga and will be listening to any components that have these type.
 function* familySaga(){
     yield takeEvery('GET_FAMILY', getFamily);
-    yield takeEvery('GET_FAMILYNAME', familyName);
+    yield takeEvery('GET_CHANG_FAMILY', changFamily);
     yield takeEvery('DELETE_MEMBER', deleteMember);
 }
 
