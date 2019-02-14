@@ -69,10 +69,10 @@ class FamilyProfileList extends Component {
                         <Typography component="p">
                             {this.props.member.family_name}</Typography>
                     </CardContent>
-                    {/* <div> */}
-                        {/* <button onClick={this.handelDelete}>Delete Member</button> */}
-                    {/* </div> */}
-                    {/* <button onClick={this.handelUpdate}>Make Update</button>*/}
+                    <div>
+                        <button onClick={this.handelDelete}>Delete Member</button>
+                    </div>
+                    <button onClick={this.handelUpdate}>Make Update</button>
                  </CardActionArea> 
             </Card>
             </div>

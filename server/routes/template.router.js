@@ -33,14 +33,14 @@ router.get('/:id', (req, res) => {
 });
 
 // get all the members of in the database
-router.get('/member', (req, res) => {
+router.get('/members', (req, res) => {
     console.log('this is in get member')
-    const queryText = 'SELECT * FROM "members"'; 
+    const queryText = 'SELECT * FROM "members" '; 
     pool.query(queryText)
     .then(result => {
         res.send(result.rows);
     }).catch(error => {
-        console.log('there is an error in get member router')
+        console.log('there is an error in get member router', error)
         res.sendStatus(500);
     })
         
@@ -81,7 +81,7 @@ router.post('/', (req, res) => {
     console.log(req.body);
     const newMember = req.body;
     const queryText = `INSERT INTO "members" ("first_name", "last_name", "date_of_birth", "gender",
-                       "description", "image", "family_id",)
+                       "description", "image", "family_id")
                        VALUES ($1, $2, $3, $4, $5, $6, $7);`;
     const queryValues = [
         newMember.firstName,
@@ -91,17 +91,14 @@ router.post('/', (req, res) => {
         newMember.description,
         newMember.image,
         newMember.family_id
-
-    ]
+    ];
     pool.query(queryText, queryValues)
         .then(response => {
             res.sendStatus(201);
         }).catch(error => {
-            console.log('there is error in newMember post');
+            console.log('there is error in new Member post');
             res.sendStatus(500);
-        })
-
-
+        });
 });
 
 module.exports = router;

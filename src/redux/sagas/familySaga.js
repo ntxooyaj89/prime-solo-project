@@ -14,9 +14,9 @@ function* getFamily (action) {
     }
 }
 
-function* getMember () {
+function* getMyMember () {
     try{
-        const response = yield axios.get('/api/template/member');
+        const response = yield axios.get('/api/template/members');
         const nextAction = { type: 'SET_MEMBER', payload: response.data};
         yield put(nextAction);
 
@@ -69,7 +69,7 @@ function* familySaga(){
     yield takeEvery('GET_FAMILY', getFamily);
     // this GET_FAMILY_NAME will get names of family...
     yield takeEvery('GET_FAMILY_NAME', getFamilyNames);
-    yield takeEvery('GET_MEMBER', getMember);
+    yield takeEvery('GET_MEMBER', getMyMember);
     yield takeEvery('DELETE_MEMBER', deleteMember);
     yield takeEvery('ADD_MEMBER', addMember);
 }
