@@ -23,16 +23,22 @@ class FamilyProfileList extends Component {
         
     }
 
-    // removeMember = () => {
+    handelDelete = () => {
+        console.log('this is handle delete')
 
-    //     // have to come back to delete not working as inteded.
-    //     const action = {
-    //         type: 'DELETE_MEMBER',
-    //         payload: { id: this.props.familyMember.id }
-    //     }
+        // have to come back to delete not working as inteded.
+        const action = {
+            type: 'DELETE_MEMBER',
+            payload: { memberId: this.props.member.id }
+        }
 
-    //     this.props.dispatch(action);
-    // }
+        this.props.dispatch(action);
+    }
+
+    handelUpdate = () => {
+        console.log('this is handle update');
+
+    }
 
     render() {
         return (
@@ -62,6 +68,10 @@ class FamilyProfileList extends Component {
                         <Typography component="p">
                             {this.props.member.family_name}</Typography>
                     </CardContent>
+                    <div>
+                        <button onClick={this.handelDelete}>Delete Member</button>
+                    </div>
+                    <button onClick={this.handelUpdate}>Make Update</button>
                 </CardActionArea>
             </Card>
             </div>

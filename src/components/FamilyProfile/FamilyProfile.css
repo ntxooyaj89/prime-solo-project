@@ -10,5 +10,5 @@
     max-width: 200px ;
     max-height: 200px ;
     border-style: ridge; 
-    float: left;
+    /* float: left; */
 }

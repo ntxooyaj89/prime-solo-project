@@ -53,9 +53,9 @@ function* addMember(action){
 function* deleteMember(action) {
     console.log('this is delete Member saga');
     try{
-        // const memberId = action.payload.memberId
-        // console.log(memberId);
-        yield axios.delete(`/api/template/${action.payload.id}`);
+        const memberId = action.payload.memberId
+        console.log(memberId);
+        yield axios.delete(`/api/template/${memberId}`);
         const nextAction = {type: 'GET_FAMILY'}
         yield put(nextAction)
     }catch(error){
