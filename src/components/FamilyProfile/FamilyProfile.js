@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import './FamilyProfile.css';
 import axios from 'axios';
 import Card from '@material-ui/core/Card';
+import FamilyProfileList from './FamilyProfileList';
 
 
 class FamilyProfile extends Component {
@@ -37,8 +38,9 @@ class FamilyProfile extends Component {
         // have to come back to delete not working as inteded.
         const action = {
             type: 'DELETE_MEMBER',
-            payload: { memberId: this.props.reduxStore.familyMember.id }
+            payload: {id: this.props.familyMember.id}
         }
+        
         this.props.dispatch(action);
     }
 
@@ -48,36 +50,45 @@ class FamilyProfile extends Component {
         return (
             <div>
                 {/* {JSON.stringify(this.props.reduxStore.familyReducer.familyMember)} */}
-                <div className="classes-card">
+                {/* <div className="classes-card"> */}
                     {/* this is members from the yang family. */}
-                    {this.props.reduxStore.familyReducer.familyMember.map(member => (
+                    {this.props.reduxStore.familyReducer.familyMember.map(member => {
+                        return(
+                            <FamilyProfileList key={member.id} member={member}/>
+                        )
+                    })}
+                      
+                        
 
-                        <div key={member.id}>
-                            <Card className={this.state.card}>
-                                <img className="imageCard" src={member.image} alt="images of family"></img>
-                                <div className="card"  >
-                                    <ul>
-                                        <li>{member.first_name}</li>
-                                        <li>{member.last_name}</li>
-                                        <li>{member.date_of_birth}</li>
-                                        <li>{member.gender}</li>
-                                        <li>{member.last_name}</li>
-                                        <li>{member.description}</li>
-                                        <li>{member.family_name}</li>
-                                        <li><button onClick={this.removeMember}>Delete member</button></li>
-                                    </ul>
+                        {/* // <div key={member.id}>
+                        //     <Card className={this.state.card}>
+                        //         <img className="imageCard" src={member.image} alt="images of family"></img>
+                        //         <div className="card"  >
+                        //             <ul>
+                        //                 <li>{member.first_name}</li>
+                        //                 <li>{member.last_name}</li>
+                        //                 <li>{member.date_of_birth}</li>
+                        //                 <li>{member.gender}</li>
+                        //                 <li>{member.last_name}</li>
+                        //                 <li>{member.description}</li>
+                        //                 <li>{member.family_name}</li>
+                        //                 <li><button onClick={this.removeMember}>Delete member</button></li>
+                        //             </ul>
 
 
-                                </div>
-                            </Card>
-                        </div>
-
-
-
-
-                    ))}
-                </div>
+                        //         </div>
+                        //     </Card>
+                        // </div> */}
             </div>
+                        
+                        
+
+
+
+
+                    
+              
+           
 
 
 

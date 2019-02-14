@@ -51,7 +51,7 @@ function* addMember(action){
 
 // this delete a member
 function* deleteMember(action) {
-    console.log('this is deleteMember saga');
+    console.log('this is delete Member saga');
     try{
         // const memberId = action.payload.memberId
         // console.log(memberId);

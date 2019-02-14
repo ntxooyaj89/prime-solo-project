@@ -8,13 +8,16 @@ const router = express.Router();
 
 // this get data by id.
 router.get('/:id', (req, res) => {
+
+    // only need authentication on routes that are protected 
     // only allow person who is authenticated.
+  
     if (req.isAuthenticated()) {
         console.log('req.user', req.user);
         // authorization 
         pool.query(`SELECT * FROM "family" JOIN "members"
                     ON "members"."family_id" = family."id"
-                    WHERE family."id" = $1;`, [req.params.id])
+                    WHERE family."id" = $1`, [req.params.id])
 
             .then(result => {
                 res.send(result.rows)
@@ -28,19 +31,7 @@ router.get('/:id', (req, res) => {
 
 });
 
-// no longer need this 
-// router.get('/chang', (req, res) => {
-//     const queryText = `SELECT * FROM "family" JOIN "members"
-//                         ON "members"."family_id" = family."id"
-//                         WHERE family."id" = 2`;
-//     pool.query(queryText)
-//     .then(result => {
-//         res.send(result.rows);
-//     }).catch(error =>{
-//         console.log('there is an error in get family', error);
-//         res.sendStatus(500);
-//     })
-// })
+
 
 router.get('/', (req, res) => {
     const queryText = 'SELECT * FROM family';
@@ -70,10 +61,11 @@ router.delete('/:id', (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
+   
     console.log(req.body);
     const newMember = req.body;
     const queryText =`INSERT INTO "members" ("first_name", "last_name", "date_of_birth", "gender",
-                       "description", "image", "family_id")
+                       "description", "image", "family_id",)
                        VALUES ($1, $2, $3, $4, $5, $6, $7);`;
     const queryValues = [
         newMember.firstName,
@@ -83,6 +75,7 @@ router.post('/', (req, res) => {
         newMember.description,
         newMember.image,
         newMember.family_id
+       
     ] 
     pool.query(queryText, queryValues)
     .then(response => {
@@ -90,7 +83,8 @@ router.post('/', (req, res) => {
     }).catch(error => {
         console.log('there is error in newMember post');
         res.sendStatus(500);
-    })                  
+    })
+        
 
 });
 
