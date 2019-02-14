@@ -33,16 +33,7 @@ class FamilyProfile extends Component {
         
     }
 
-    removeMember = () => {
     
-        // have to come back to delete not working as inteded.
-        const action = {
-            type: 'DELETE_MEMBER',
-            payload: {id: this.props.familyMember.id}
-        }
-        
-        this.props.dispatch(action);
-    }
 
 
     render() {

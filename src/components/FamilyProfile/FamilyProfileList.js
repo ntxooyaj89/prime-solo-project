@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import './FamilyProfile.css';
+import './FamilyProfile.css';
 import axios from 'axios';
 import Card from '@material-ui/core/Card';
 import { CardActionArea, CardMedia, CardContent, Typography } from '@material-ui/core';
@@ -23,13 +23,24 @@ class FamilyProfileList extends Component {
         
     }
 
+    // removeMember = () => {
+
+    //     // have to come back to delete not working as inteded.
+    //     const action = {
+    //         type: 'DELETE_MEMBER',
+    //         payload: { id: this.props.familyMember.id }
+    //     }
+
+    //     this.props.dispatch(action);
+    // }
+
     render() {
         return (
             <div>
             <div>
                 {/* {JSON.stringify(this.props.member.image)} */}
             </div>
-            <Card ClassName='card'>
+            <Card className='card'>
                 <CardActionArea>
                     <CardMedia 
                         className={this.state.media}
