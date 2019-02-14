@@ -6,12 +6,13 @@ const router = express.Router();
  * GET route template
  */
 
-// this get data by id.
+
+// this get each family by id.
 router.get('/:id', (req, res) => {
 
     // only need authentication on routes that are protected 
     // only allow person who is authenticated.
-  
+
     if (req.isAuthenticated()) {
         console.log('req.user', req.user);
         // authorization 
@@ -31,8 +32,23 @@ router.get('/:id', (req, res) => {
 
 });
 
+// get all the members of in the database
+router.get('/member', (req, res) => {
+    console.log('this is in get member')
+    const queryText = 'SELECT * FROM "members"'; 
+    pool.query(queryText)
+    .then(result => {
+        res.send(result.rows);
+    }).catch(error => {
+        console.log('there is an error in get member router')
+        res.sendStatus(500);
+    })
+        
+
+})
 
 
+// just get the family name
 router.get('/', (req, res) => {
     const queryText = 'SELECT * FROM family';
     pool.query(queryText)
@@ -44,7 +60,7 @@ router.get('/', (req, res) => {
 });
 
 
-
+// delete the member
 router.delete('/:id', (req, res) => {
     console.log('this is delete', req.params);
     const queryText = 'DELETE FROM "members" WHERE id =$1';
@@ -61,10 +77,10 @@ router.delete('/:id', (req, res) => {
  * POST route template
  */
 router.post('/', (req, res) => {
-   
+
     console.log(req.body);
     const newMember = req.body;
-    const queryText =`INSERT INTO "members" ("first_name", "last_name", "date_of_birth", "gender",
+    const queryText = `INSERT INTO "members" ("first_name", "last_name", "date_of_birth", "gender",
                        "description", "image", "family_id",)
                        VALUES ($1, $2, $3, $4, $5, $6, $7);`;
     const queryValues = [
@@ -75,16 +91,16 @@ router.post('/', (req, res) => {
         newMember.description,
         newMember.image,
         newMember.family_id
-       
-    ] 
+
+    ]
     pool.query(queryText, queryValues)
-    .then(response => {
-        res.sendStatus(201);
-    }).catch(error => {
-        console.log('there is error in newMember post');
-        res.sendStatus(500);
-    })
-        
+        .then(response => {
+            res.sendStatus(201);
+        }).catch(error => {
+            console.log('there is error in newMember post');
+            res.sendStatus(500);
+        })
+
 
 });
 

@@ -2,7 +2,7 @@ import axios from 'axios';
 import { put, takeEvery } from 'redux-saga/effects';
 
 
-// this get the yang family
+// Saga get each indiviual family by their id.
 function* getFamily (action) {
     try{
         const response = yield axios.get(`/api/template/${action.payload.id}`);
@@ -14,17 +14,17 @@ function* getFamily (action) {
     }
 }
 
-// this gets the chang family
-// function* changFamily() {
-//     try {
-//         const response = yield axios.get('/api/template/chang');
-//         const nextAction = { type: 'SET_CHANG_FAMILY', payload: response.data }
-//         yield put(nextAction);
+function* getMember () {
+    try{
+        const response = yield axios.get('/api/template/member');
+        const nextAction = { type: 'SET_MEMBER', payload: response.data};
+        yield put(nextAction);
 
-//     } catch (error) {
-//         console.log('saga family get request failed', error);
-//     }
-// }
+    }catch (error) {
+        console.log('error in getMember saga', error);
+    }
+}
+
 
 function* getFamilyNames() {
     try{
@@ -65,9 +65,11 @@ function* deleteMember(action) {
 
 // this is root saga and will be listening to any components that have these type.
 function* familySaga(){
+    // this 'GET_FAMILY' gets the indiviual family 
     yield takeEvery('GET_FAMILY', getFamily);
     // this GET_FAMILY_NAME will get names of family...
     yield takeEvery('GET_FAMILY_NAME', getFamilyNames);
+    yield takeEvery('GET_MEMBER', getMember);
     yield takeEvery('DELETE_MEMBER', deleteMember);
     yield takeEvery('ADD_MEMBER', addMember);
 }

@@ -13,15 +13,16 @@ class FamilyProfileList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-        card: { maxWidth: 20, 
-        },
-        media: {
-            height: 100
-        },
-     }
-
-        
+         media: {
+            height: 50,
+         },
+         card:{
+             maxWidth: 100,
+         }
+      };
     }
+        
+     
 
     handelDelete = () => {
         console.log('this is handle delete')
@@ -42,14 +43,14 @@ class FamilyProfileList extends Component {
 
     render() {
         return (
-            <div>
-            <div>
+            
+            <div className="classes-card">
                 {/* {JSON.stringify(this.props.member.image)} */}
-            </div>
-            <Card className='card'>
+            
+            <Card className="card">
                 <CardActionArea>
-                    <CardMedia 
-                        className={this.state.media}
+                    <CardMedia component="img"
+                        className="card"
                         image={this.props.member.image}/>
                      
                     <CardContent>
@@ -68,11 +69,11 @@ class FamilyProfileList extends Component {
                         <Typography component="p">
                             {this.props.member.family_name}</Typography>
                     </CardContent>
-                    <div>
-                        <button onClick={this.handelDelete}>Delete Member</button>
-                    </div>
-                    <button onClick={this.handelUpdate}>Make Update</button>
-                </CardActionArea>
+                    {/* <div> */}
+                        {/* <button onClick={this.handelDelete}>Delete Member</button> */}
+                    {/* </div> */}
+                    {/* <button onClick={this.handelUpdate}>Make Update</button>*/}
+                 </CardActionArea> 
             </Card>
             </div>
         )

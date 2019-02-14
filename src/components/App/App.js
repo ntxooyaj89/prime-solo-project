@@ -21,6 +21,7 @@ import './App.css';
 import FamilyProfile from '../FamilyProfile/FamilyProfile';
 import AddNewMember from '../AddNewMember/AddNewMember';
 import ChangProfile from '../ChangProfile/ChangProfile';
+import FamilyMember from '../FamilyMember/FamilyMember';
 
 class App extends Component {
   componentDidMount () {
@@ -74,6 +75,12 @@ class App extends Component {
               exact
               path="/family-profile/:id"
               component={ChangProfile}
+            />
+
+            <ProtectedRoute
+              exact
+              path="/family-member"
+              component={FamilyMember}
             />
 
 
