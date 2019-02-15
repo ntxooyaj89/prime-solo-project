@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 
-class FamilyMember extends Component {
+class FamilyTree extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            FamilyMember: []
+            familyTree: []
         }
     }
 
@@ -15,7 +15,7 @@ class FamilyMember extends Component {
     }
 
     getMember = () => {
-        const action = {type: 'GET_MEMBER'};
+        const action = { type: 'GET_MEMBER', payload: { id: this.props.match.params.id }};
         this.props.dispatch(action)
         
     }
@@ -24,8 +24,8 @@ class FamilyMember extends Component {
     render(){
         return(
             <div>
-                {JSON.stringify(this.props.reduxStore.familyReducer.memberOfFamily)}
-                <h3>This is Family Member</h3>
+                {JSON.stringify(this.props)}
+                <h3>This is Family Tree</h3>
             </div>
         )
     }
@@ -35,4 +35,4 @@ const mapReduxStoreToProps = (reduxStore) => ({
     reduxStore
 });
 
-export default connect(mapReduxStoreToProps) (FamilyMember);
+export default connect(mapReduxStoreToProps) (FamilyTree);

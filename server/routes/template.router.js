@@ -33,30 +33,36 @@ router.get('/:id', (req, res) => {
 });
 
 // get all the members of in the database
-router.get('/members', (req, res) => {
-    console.log('this is in get member')
-    const queryText = 'SELECT * FROM "members" '; 
-    pool.query(queryText)
-    .then(result => {
-        res.send(result.rows);
-    }).catch(error => {
-        console.log('there is an error in get member router', error)
-        res.sendStatus(500);
-    })
+// router.get('/members', (req, res) => {
+//     console.log('this is in get member')
+//     const queryText = 'SELECT * FROM "members" '; 
+//     pool.query(queryText)
+//     .then(result => {
+//         res.send(result.rows);
+//     }).catch(error => {
+//         console.log('there is an error in get member router', error)
+//         res.sendStatus(500);
+//     })
         
 
-})
+// })
 
 
 // just get the family name
 router.get('/', (req, res) => {
-    const queryText = 'SELECT * FROM family';
-    pool.query(queryText)
+    
+    const queryText = `SELECT * FROM "person" 
+                       JOIN "person_family" ON "person"."id" = "person_family"."person_id"
+                       JOIN "family" ON "family"."id" = "person_family"."family_id" 
+                       WHERE person.id = $1;`;
+    pool.query(queryText, req.user.id)
         .then((result) => { res.send(result.rows); })
         .catch((err) => {
             console.log('Error completing SELECT family query', err);
             res.sendStatus(500);
+        
         });
+    
 });
 
 

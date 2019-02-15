@@ -14,9 +14,10 @@ function* getFamily (action) {
     }
 }
 
-function* getMyMember () {
+
+function* getMyMember (action) {
     try{
-        const response = yield axios.get('/api/template/members');
+        const response = yield axios.get(`/api/template/${action.payload.id}`);
         const nextAction = { type: 'SET_MEMBER', payload: response.data};
         yield put(nextAction);
 

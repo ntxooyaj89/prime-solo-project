@@ -40,7 +40,7 @@ class FamilyProfile extends Component {
 
         return (
             <div>
-                {/* {JSON.stringify(this.props.reduxStore.familyReducer.familyMember)} */}
+                {/* {JSON.stringify(this.props)} */}
                 {/* <div className="classes-card"> */}
                     {/* this is members from the yang family. */}
                     {this.props.reduxStore.familyReducer.familyMember.map(member => {
