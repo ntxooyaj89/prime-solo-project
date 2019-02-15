@@ -8,19 +8,17 @@ import Button from '@material-ui/core/Button';
 
 
 class FamilyProfileList extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         media: {
-    //             height: 140,
-    //         },
-    //         card: {
-    //             maxWidth: 100,
-    //         }
-    //     };
-    // }
-
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            card: {
+                height: 150,
+            },
+            media: {
+                maxWidth: 100,
+            }
+        };
+    }
 
     handelDelete = () => {
         console.log('this is handle delete')
@@ -37,32 +35,37 @@ class FamilyProfileList extends Component {
 
     handelUpdate = () => {
         console.log('this is handle update');
+        const action = {
+            type: 'UPDATE_MEMBER',
+            payload: {memberId: this.props.member.id}
+        }
 
     }
 
     render() {
         return (
 
-            <div className="classes-card">
+            <div >
                 {/* {JSON.stringify(this.props.member.image)} */}
 
-                <Card className="card">
+                <Card className={this.state.card}>
                     <CardActionArea>
-                        <CardMedia component="img"
-                            // className={this.state.media}
+                        <CardMedia
+                            className={this.state.media}
                             image={this.props.member.image}
-                            // adding a height 
-                            height="" />
+                        // height="200"
+                        />
 
                         <CardContent>
-                            <Typography gutterBottom variant="h5" component="h2">
+                            <Typography >
                                 {this.props.member.first_name}
-
-                                <Typography component="p">
-                                    {this.props.member.last_name}
-                                </Typography>
-
                             </Typography>
+
+                            <Typography component="p">
+                                {this.props.member.last_name}
+                            </Typography>
+
+
                             <Typography component="p">
                                 {this.props.member.date_of_birth}
                             </Typography>
@@ -73,23 +76,16 @@ class FamilyProfileList extends Component {
                             <Typography component="p">
                                 {this.props.member.family_name}</Typography>
                         </CardContent>
+                    </CardActionArea>
+                    <CardActions>
 
 
                         <Button size="small" color="primary" onClick={this.handelDelete}>Delete Member</Button>
-                        <Button size="small" color="primary" onClick={this.handelUpdate}>Update</Button>
+                        {/* <Button size="small" color="primary" onClick={this.handelUpdate}>Update</Button> */}
 
 
+                    </CardActions>
 
-
-
-
-
-
-
-
-
-                        {/* <button onClick={this.handelUpdate}>Make Update</button> */}
-                    </CardActionArea>
                 </Card>
             </div>
         )

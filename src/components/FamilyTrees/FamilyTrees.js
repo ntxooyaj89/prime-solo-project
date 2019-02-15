@@ -6,13 +6,19 @@ class FamilyTree extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            person: '',
+            family: '',
         }
     }
 
     componentDidMount() {
         this.getUserFamily();
+       
     }
+
+    // getUser = () => {
+    //     const action = { type: 'GET_USER'};
+    //     this.props.dispatch(action)
+    // }
 
     // get the family names of the user
     getUserFamily = () => {
@@ -22,11 +28,20 @@ class FamilyTree extends Component {
 
     }
 
+    selectFamily = (event) => {
+        console.log('this is select Family');
+        this.setState({
+            family: event.target.value
+           
+        })
+
+    }
+
     handleUserFamily = (event) => {
         console.log('this is handleUserFamily');
-        this.setState({
-            person: event.target.value,
-        });
+        // this.setState({
+        //     family: event.target.value,
+        // });
         this.props.history.push(`/family-profile/${event.target.value}`);
     }
 
@@ -38,21 +53,15 @@ class FamilyTree extends Component {
         return(
            
            <div>
-               {JSON.stringify(this.props.reduxStore.familyReducer.myFamilyName)}
-           <ul>
-                    {this.props.reduxStore.familyReducer.myFamilyName.map((user, i) => {
-                        return (
-                            // set the value to the id of the object and use it to send to next component.
-                        <button onClick={this.handleUserFamily} key={i} value={user.id}>{user.family_name}</button>
-                        )
+               {/* {JSON.stringify(this.props.reduxStore.familyReducer.myFamilyName)} */}
 
-                    })}
-
-           </ul>
-
-            
-                                        
-                
+               {this.props.reduxStore.familyReducer.myFamilyName.map((name, i) => {
+                   return (
+                       // this will send user to their family family when they clicked on button.
+                       <button onClick={this.handleUserFamily}  key={i} value={name.id}>{name.family_name}</button>
+                   )
+               })}
+           
             </div>
             
             
@@ -74,11 +83,3 @@ const mapReduxStoreToProps = (reduxStore) => ({
 
 export default connect(mapReduxStoreToProps)(FamilyTree);
                     
-// payload: {id: this.props.reduxStore.user.id }
-
-// {
-//     this.props.reduxStore.familyReducer.myFamilyName.map((user, i) => {
-//         return <option key={i} value={user.id}>{user.family_name}</option>
-
-//     })
-// }

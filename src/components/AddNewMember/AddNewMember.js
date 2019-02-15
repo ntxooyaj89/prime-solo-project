@@ -35,7 +35,7 @@ class AddNewMember extends Component {
         this.props.dispatch(action);
     }
 
-    // this gets the family members
+    //this gets the family members
     // getFamily = () => {
 
     //     const action = { type: 'GET_FAMILY', payload: { id: this.props.match.params.id }  };

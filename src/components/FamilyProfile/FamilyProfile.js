@@ -51,25 +51,6 @@ class FamilyProfile extends Component {
                       
                         
 
-                        {/* // <div key={member.id}>
-                        //     <Card className={this.state.card}>
-                        //         <img className="imageCard" src={member.image} alt="images of family"></img>
-                        //         <div className="card"  >
-                        //             <ul>
-                        //                 <li>{member.first_name}</li>
-                        //                 <li>{member.last_name}</li>
-                        //                 <li>{member.date_of_birth}</li>
-                        //                 <li>{member.gender}</li>
-                        //                 <li>{member.last_name}</li>
-                        //                 <li>{member.description}</li>
-                        //                 <li>{member.family_name}</li>
-                        //                 <li><button onClick={this.removeMember}>Delete member</button></li>
-                        //             </ul>
-
-
-                        //         </div>
-                        //     </Card>
-                        // </div> */}
             </div>
                         
                         
