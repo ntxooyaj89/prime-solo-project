@@ -17,12 +17,12 @@ function* getFamily (action) {
 
 function* getUserFamily (action) {
     try{
-        const response = yield axios.get(`/api/template/${action.payload.id}`);
-        const nextAction = { type: 'SET_USER_FAMILY', payload: response.data};
+        const response = yield axios.get(`/api/template/`);
+        const nextAction = { type: 'SET_USER_FAMILY', payload: response.data}
         yield put(nextAction);
 
     }catch (error) {
-        console.log('error in getMember saga', error);
+        console.log('error in getUserFamily saga', error);
     }
 }
 

@@ -7,7 +7,7 @@ const router = express.Router();
  */
 
 
-// this get each family by id.
+// this get each family by the family.id.
 router.get('/:id', (req, res) => {
 
     // only need authentication on routes that are protected 
@@ -48,20 +48,21 @@ router.get('/:id', (req, res) => {
 // })
 
 
-// just get the family name
+// this get the user's family
 router.get('/', (req, res) => {
-    if(req.isAuthenticated){
-    console.log('this is get member routes', req.user);
+    if(req.isAuthenticated()){
+    console.log('this is get user family routes', req.user);
     const queryText = `SELECT * FROM "person" 
                        JOIN "person_family" ON "person"."id" = "person_family"."person_id"
                        JOIN "family" ON "family"."id" = "person_family"."family_id" 
                        WHERE person.id = $1;`;
-    pool.query(queryText, req.user.id)
-        .then((result) => { res.send(result.rows); })
+    pool.query(queryText, [req.user.id])
+        .then((result) => { 
+            res.send(result.rows); 
+        })
         .catch((err) => {
             console.log('Error completing SELECT family query', err);
             res.sendStatus(500);
-        
         });
     }else{
         res.sendStatus(403);  
@@ -70,7 +71,7 @@ router.get('/', (req, res) => {
 });
 
 
-// delete the member
+// delete a member
 router.delete('/:id', (req, res) => {
     console.log('this is delete', req.params);
     const queryText = 'DELETE FROM "members" WHERE id =$1';
@@ -86,6 +87,7 @@ router.delete('/:id', (req, res) => {
 /**
  * POST route template
  */
+// add a new member
 router.post('/', (req, res) => {
 
     console.log(req.body);
