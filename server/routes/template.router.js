@@ -50,7 +50,8 @@ router.get('/:id', (req, res) => {
 
 // just get the family name
 router.get('/', (req, res) => {
-    
+    if(req.isAuthenticated){
+    console.log('this is get member routes', req.user);
     const queryText = `SELECT * FROM "person" 
                        JOIN "person_family" ON "person"."id" = "person_family"."person_id"
                        JOIN "family" ON "family"."id" = "person_family"."family_id" 
@@ -62,6 +63,9 @@ router.get('/', (req, res) => {
             res.sendStatus(500);
         
         });
+    }else{
+        res.sendStatus(403);  
+    }
     
 });
 

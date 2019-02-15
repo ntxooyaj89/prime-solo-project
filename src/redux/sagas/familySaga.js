@@ -15,10 +15,10 @@ function* getFamily (action) {
 }
 
 
-function* getMyMember (action) {
+function* getUserFamily (action) {
     try{
         const response = yield axios.get(`/api/template/${action.payload.id}`);
-        const nextAction = { type: 'SET_MEMBER', payload: response.data};
+        const nextAction = { type: 'SET_USER_FAMILY', payload: response.data};
         yield put(nextAction);
 
     }catch (error) {
@@ -27,16 +27,16 @@ function* getMyMember (action) {
 }
 
 
-function* getFamilyNames() {
-    try{
-        const familyNameResponse = yield axios.get('/api/template');
-        const nextAction = {type: 'SET_FAMILY_NAME', payload: familyNameResponse.data};
-        // this info will be sent to store in my reducer that have type of 'SET_FAMILY_NAME'
-        yield put(nextAction);
-    }catch(error){
-        console.log('there is error in getFamilyName saga')
-    }
-}
+// function* getFamilyNames() {
+//     try{
+//         const familyNameResponse = yield axios.get('/api/template');
+//         const nextAction = {type: 'SET_FAMILY_NAME', payload: familyNameResponse.data};
+//         // this info will be sent to store in my reducer that have type of 'SET_FAMILY_NAME'
+//         yield put(nextAction);
+//     }catch(error){
+//         console.log('there is error in getFamilyName saga')
+//     }
+// }
 
 function* addMember(action){
     try{
@@ -69,8 +69,8 @@ function* familySaga(){
     // this 'GET_FAMILY' gets the indiviual family 
     yield takeEvery('GET_FAMILY', getFamily);
     // this GET_FAMILY_NAME will get names of family...
-    yield takeEvery('GET_FAMILY_NAME', getFamilyNames);
-    yield takeEvery('GET_MEMBER', getMyMember);
+    // yield takeEvery('GET_FAMILY_NAME', getFamilyNames);
+    yield takeEvery('GET_USER_FAMILY', getUserFamily);
     yield takeEvery('DELETE_MEMBER', deleteMember);
     yield takeEvery('ADD_MEMBER', addMember);
 }

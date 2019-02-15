@@ -10,12 +10,13 @@ const familyMember = (state = [], action) =>{
 
 // this reducer all family_Names from family table
 const myFamilyName = (state = [], action) => {
-    if(action.type === 'SET_FAMILY_NAME'){
+    if(action.type === 'SET_USER_FAMILY'){
         return action.payload;
     }
     return state;
 }
 
+// this holds all the family members of the user.
 const memberOfFamily = (state = [], action) => {
     if(action.type === 'SET_MEMBER'){
         return action.payload;

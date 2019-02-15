@@ -11,11 +11,12 @@ class FamilyTree extends Component {
     }
 
     componentDidMount() {
-        this.getMember();
+        this.getUserFamily();
     }
 
-    getMember = () => {
-        const action = { type: 'GET_MEMBER', payload: { id: this.props.match.params.id }};
+    getUserFamily = () => {
+        // const userId = this.props.reduxStore.user.id
+        const action = { type: 'GET_USER_FAMILY', payload: { id: this.props.reduxStore.user.id }};
         this.props.dispatch(action)
         
     }
@@ -24,7 +25,8 @@ class FamilyTree extends Component {
     render(){
         return(
             <div>
-                {JSON.stringify(this.props)}
+                {JSON.stringify(this.props.reduxStore.user.id)}
+                {JSON.stringify(this.props.reduxStore.familyReducer.memberOfFamily)}
                 <h3>This is Family Tree</h3>
             </div>
         )

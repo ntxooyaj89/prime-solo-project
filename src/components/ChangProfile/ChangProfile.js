@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
-import Card from '@material-ui/core/Card';
+// import axios from 'axios';
+// import Card from '@material-ui/core/Card';
 
 
 class ChangProfile extends Component {
