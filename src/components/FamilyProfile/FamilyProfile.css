@@ -6,9 +6,9 @@
 
 } */
 
-/* .card{
-    max-width: 100px ;
-    max-height: 100px ;
-    border-style: ridge; 
+.card{
+    /* width: 100px ; */
+    float: left ;
+    margin: 100x; 
     
-} */
+}

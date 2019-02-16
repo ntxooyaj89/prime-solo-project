@@ -5,18 +5,20 @@ import './FamilyProfile.css';
 import Card from '@material-ui/core/Card';
 import { CardActionArea, CardMedia, CardContent, Typography, CardActions } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
+// import classNames from 'classnames';
+
+
 
 
 class FamilyProfileList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            card: {
-                height: 150,
-            },
-            media: {
-                maxWidth: 100,
-            }
+            card: {maxWidth: 150,},
+            media: {height: 150, paddingTop: '56.25%'},
+            actions: {display: 'flex'},
+            expand: {transform: 'rotate(0deg)', marginLeft: 'auto'},
+            expandOpen: {transform: 'rotate(180deg)'}
         };
     }
 
@@ -43,25 +45,31 @@ class FamilyProfileList extends Component {
     }
 
     render() {
+        
         return (
 
-            <div >
+            <div className="card">
                 {/* {JSON.stringify(this.props.member.image)} */}
-
-                <Card className={this.state.card}>
+                
+                <Card classes={this.state.card} >
                     <CardActionArea>
-                        <CardMedia
-                            className={this.state.media}
-                            image={this.props.member.image}
-                        // height="200"
-                        />
+                        <CardMedia 
+                        component="img"
+                        className={this.state.media}
+                        alt="family members"
+                        height="200"
+                        image={this.props.member.image}
+                           
+                            
+                    
+                />
 
                         <CardContent>
-                            <Typography >
+                            <Typography gutterBottom variant="h5" component="h2" >
                                 {this.props.member.first_name}
                             </Typography>
 
-                            <Typography component="p">
+                            <Typography gutterBottom variant="h5" component="h2" >
                                 {this.props.member.last_name}
                             </Typography>
 
@@ -76,17 +84,19 @@ class FamilyProfileList extends Component {
                             <Typography component="p">
                                 {this.props.member.family_name}</Typography>
                         </CardContent>
+
                     </CardActionArea>
                     <CardActions>
 
 
                         <Button size="small" color="primary" onClick={this.handelDelete}>Delete Member</Button>
-                        {/* <Button size="small" color="primary" onClick={this.handelUpdate}>Update</Button> */}
+                        <Button size="small" color="primary" onClick={this.handelUpdate}>Update</Button>
 
 
                     </CardActions>
 
                 </Card>
+                
             </div>
         )
     }
