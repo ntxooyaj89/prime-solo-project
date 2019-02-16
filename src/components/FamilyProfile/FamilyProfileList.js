@@ -59,10 +59,7 @@ class FamilyProfileList extends Component {
                         alt="family members"
                         height="200"
                         image={this.props.member.image}
-                           
-                            
-                    
-                />
+                        />
 
                         <CardContent>
                             <Typography gutterBottom variant="h5" component="h2" >

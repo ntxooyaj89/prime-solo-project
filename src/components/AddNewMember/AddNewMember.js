@@ -25,22 +25,23 @@ class AddNewMember extends Component {
 
     componentDidMount() {
         
-        this.getFamilyName();
+        // this.getFamilyName();
+        this.getFamily();
 
     }
 
     // this gets the family name
-    getFamilyName = () => {
-        const action = { type: 'GET_FAMILY_NAME' };
-        this.props.dispatch(action);
-    }
-
-    //this gets the family members
-    // getFamily = () => {
-
-    //     const action = { type: 'GET_FAMILY', payload: { id: this.props.match.params.id }  };
+    // getFamilyName = () => {
+    //     const action = { type: 'GET_FAMILY_NAME' };
     //     this.props.dispatch(action);
     // }
+
+    //this gets the family members
+    getFamily = () => {
+
+        const action = { type: 'GET_FAMILY', payload: { id: this.props.match.params.id }  };
+        this.props.dispatch(action);
+    }
 
     handleFirstName = event => {
         console.log('this is handleMemberFirstName');
@@ -128,7 +129,7 @@ class AddNewMember extends Component {
 
             <div>
 
-                {/* {JSON.stringify(this.props.reduxStore.familyReducer.myFamilyName)} */}
+                {JSON.stringify(this.props.reduxStore.familyReducer.familyMember)}
 
                 <form onSubmit={this.addNewMember}>
 
