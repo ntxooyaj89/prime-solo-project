@@ -70,7 +70,8 @@ function* deleteMember(action) {
 function* updateMember(action) {
     console.log('this is updateMember');
     try {
-        yield axios.post('/api/template', action.payload);
+        const memberId = action.payload.memberId
+        yield axios.put(`/api/template/${memberId}`);
         const nextAction = { type: 'GET_FAMILY' };
         yield put(nextAction);
     } catch (error) {

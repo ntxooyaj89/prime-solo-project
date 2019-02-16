@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import FamilyProfileUpdate from './FamilyProfileUpdate';
 import './FamilyProfile.css';
 import Card from '@material-ui/core/Card';
 import { CardActionArea, CardMedia, CardContent, Typography, CardActions } from '@material-ui/core';
@@ -44,9 +43,12 @@ class FamilyProfileList extends Component {
 
     handelUpdate = () => {
         console.log('this is handle update');
-        
-
-        
+        const action = {
+            type: 'UPDATE_MEMBER',
+            payload: {memberId: this.props.member.id}
+        }
+        this.props.dispatch(action);
+        window.location.reload()
     }
 
     render() {
@@ -54,7 +56,7 @@ class FamilyProfileList extends Component {
         return (
 
             <div className="card">
-                {JSON.stringify(this.props.member.have_we_met)}
+                {/* {JSON.stringify(this.props.member.have_we_met)} */}
 
                 <Card classes={this.state.card} onClick={this.selectMemberFamily} >
                     <CardActionArea>
@@ -86,10 +88,12 @@ class FamilyProfileList extends Component {
                                 {this.props.member.description}</Typography>
 
                             <Typography component="p">
-                                {JSON.stringify(this.props.member.have_we_met)}</Typography>
-
-                            <Typography component="p">
                                 {this.props.member.family_name}</Typography>
+
+                              
+                            <Typography>I've met this member: {JSON.stringify(this.props.member.have_we_met)}</Typography>
+                            
+
                             
                         </CardContent>
 

@@ -10,16 +10,12 @@ import {connect} from 'react-redux';
 
 import Nav from '../Nav/Nav';
 import Footer from '../Footer/Footer';
-
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
-
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
 import InfoPage from '../InfoPage/InfoPage';
-
 import './App.css';
 import FamilyProfile from '../FamilyProfile/FamilyProfile';
-import FamilyProfileUpdate from '../FamilyProfile/FamilyProfileUpdate';
 import AddNewMember from '../AddNewMember/AddNewMember';
 import ChangProfile from '../ChangProfile/ChangProfile';
 import FamilyTrees from '../FamilyTrees/FamilyTrees';
@@ -85,13 +81,7 @@ class App extends Component {
               component={FamilyTrees}
             />
 
-            <ProtectedRoute
-              exact
-              path="/family-profile-update"
-              component={FamilyProfileUpdate}
-            />
-
-
+            
             
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
