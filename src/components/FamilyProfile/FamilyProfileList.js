@@ -35,11 +35,11 @@ class FamilyProfileList extends Component {
         window.location.reload();
     }
 
-    // selectMemberFamily = () => {
-    //     console.log('this is select member family');
-    //     // 
-    //     this.props.history.push(`/family-profile/${this.props.member.family_id}`);
-    // }
+    selectMemberFamily = () => {
+        console.log('this is select member family');
+        // 
+        this.props.history.push(`/family-profile/${this.props.member.family_id}`);
+    }
 
     handelUpdate = () => {
         console.log('this is handle update');
@@ -56,7 +56,7 @@ class FamilyProfileList extends Component {
         return (
 
             <div className="card">
-                {/* {JSON.stringify(this.props.member.have_we_met)} */}
+                {JSON.stringify(this.props.member.family_id)}
 
                 <Card classes={this.state.card} onClick={this.selectMemberFamily} >
                     <CardActionArea>

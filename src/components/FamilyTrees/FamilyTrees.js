@@ -15,12 +15,7 @@ class FamilyTree extends Component {
        
     }
 
-    // getUser = () => {
-    //     const action = { type: 'GET_USER'};
-    //     this.props.dispatch(action)
-    // }
-
-    // get the family names of the user
+    // this gets the user's family 
     getUserFamily = () => {
         // const userId = this.props.reduxStore.user.id
         const action = { type: 'GET_USER_FAMILY' };
@@ -52,17 +47,18 @@ class FamilyTree extends Component {
 
         return(
            
-           <div>
-               {/* {JSON.stringify(this.props.reduxStore.familyReducer.myFamilyName)} */}
+           <form>
+               {JSON.stringify(this.props.reduxStore.familyReducer.myFamilyName)}
+               <h1>FAMILY SIRCLE</h1>
 
-               {this.props.reduxStore.familyReducer.myFamilyName.map((name, i) => {
-                   return (
-                       // this sends user to the family name they clicked on.
-                       <button onClick={this.handleUserFamily}  key={i} value={name.id}>{name.family_name}</button>
-                   )
-               })}
+                <select onChange={this.handleUserFamily} >
+                    <option value="">Select Family</option>
+                    {this.props.reduxStore.familyReducer.myFamilyName.map((member, i) => {
+                        return <option key={i} value={member.id}>{member.family_name}</option>
+                    })}
+                </select>
            
-            </div>
+            </form>
             
             
                
