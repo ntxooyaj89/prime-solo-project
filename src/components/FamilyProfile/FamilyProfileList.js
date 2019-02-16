@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import FamilyProfileUpdate from './FamilyProfileUpdate';
 import './FamilyProfile.css';
-// import axios from 'axios';
 import Card from '@material-ui/core/Card';
 import { CardActionArea, CardMedia, CardContent, Typography, CardActions } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
@@ -14,11 +14,12 @@ class FamilyProfileList extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            card: {maxWidth: 150,},
-            media: {height: 150, paddingTop: '56.25%'},
-            actions: {display: 'flex'},
-            expand: {transform: 'rotate(0deg)', marginLeft: 'auto'},
-            expandOpen: {transform: 'rotate(180deg)'}
+            add: true,
+            card: { maxWidth: 150, },
+            media: { height: 150, paddingTop: '56.25%' },
+            actions: { display: 'flex' },
+            expand: { transform: 'rotate(0deg)', marginLeft: 'auto' },
+            expandOpen: { transform: 'rotate(180deg)' }
         };
     }
 
@@ -35,30 +36,34 @@ class FamilyProfileList extends Component {
         window.location.reload();
     }
 
+    // selectMemberFamily = () => {
+    //     console.log('this is select member family');
+    //     // 
+    //     this.props.history.push(`/family-profile/${this.props.member.family_id}`);
+    // }
+
     handelUpdate = () => {
         console.log('this is handle update');
-        const action = {
-            type: 'UPDATE_MEMBER',
-            payload: {memberId: this.props.member.id}
-        }
+        
 
+        
     }
 
     render() {
-        
+
         return (
 
             <div className="card">
-                {/* {JSON.stringify(this.props.member.image)} */}
-                
-                <Card classes={this.state.card} >
+                {JSON.stringify(this.props.member.have_we_met)}
+
+                <Card classes={this.state.card} onClick={this.selectMemberFamily} >
                     <CardActionArea>
-                        <CardMedia 
-                        component="img"
-                        className={this.state.media}
-                        alt="family members"
-                        height="200"
-                        image={this.props.member.image}
+                        <CardMedia
+                            component="img"
+                            className={this.state.media}
+                            alt="family members"
+                            height="250"
+                            image={this.props.member.image}
                         />
 
                         <CardContent>
@@ -72,14 +77,20 @@ class FamilyProfileList extends Component {
 
 
                             <Typography component="p">
-                                {this.props.member.date_of_birth}
-                            </Typography>
+                                {this.props.member.date_of_birth}</Typography>
+
                             <Typography component="p">
                                 {this.props.member.gender}</Typography>
+
                             <Typography component="p">
                                 {this.props.member.description}</Typography>
+
+                            <Typography component="p">
+                                {JSON.stringify(this.props.member.have_we_met)}</Typography>
+
                             <Typography component="p">
                                 {this.props.member.family_name}</Typography>
+                            
                         </CardContent>
 
                     </CardActionArea>
@@ -87,13 +98,13 @@ class FamilyProfileList extends Component {
 
 
                         <Button size="small" color="primary" onClick={this.handelDelete}>Delete Member</Button>
-                        <Button size="small" color="primary" onClick={this.handelUpdate}>Update</Button>
+                        <Button size="small" color="primary" onClick={this.handelUpdate}>We've met</Button>
 
 
                     </CardActions>
 
                 </Card>
-                
+
             </div>
         )
     }

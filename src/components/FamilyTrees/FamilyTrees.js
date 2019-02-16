@@ -57,7 +57,7 @@ class FamilyTree extends Component {
 
                {this.props.reduxStore.familyReducer.myFamilyName.map((name, i) => {
                    return (
-                       // this will send user to their family family when they clicked on button.
+                       // this sends user to the family name they clicked on.
                        <button onClick={this.handleUserFamily}  key={i} value={name.id}>{name.family_name}</button>
                    )
                })}

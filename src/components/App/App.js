@@ -19,6 +19,7 @@ import InfoPage from '../InfoPage/InfoPage';
 
 import './App.css';
 import FamilyProfile from '../FamilyProfile/FamilyProfile';
+import FamilyProfileUpdate from '../FamilyProfile/FamilyProfileUpdate';
 import AddNewMember from '../AddNewMember/AddNewMember';
 import ChangProfile from '../ChangProfile/ChangProfile';
 import FamilyTrees from '../FamilyTrees/FamilyTrees';
@@ -84,11 +85,11 @@ class App extends Component {
               component={FamilyTrees}
             />
 
-            {/* <ProtectedRoute
+            <ProtectedRoute
               exact
-              path="/family-tree"
-              component={FamilyTree}
-            /> */}
+              path="/family-profile-update"
+              component={FamilyProfileUpdate}
+            />
 
 
             

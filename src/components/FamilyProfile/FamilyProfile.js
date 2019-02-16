@@ -1,21 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './FamilyProfile.css';
-// import axios from 'axios';
 import Card from '@material-ui/core/Card';
 import FamilyProfileList from './FamilyProfileList';
 
 
+// this components get the family by it's user's id...
+// then pass the database info to familyProfileList and break it down...
 class FamilyProfile extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = {
-            card: { maxWidth: 20, }
-
-        }
-    }
-
 
 
     componentDidMount() {
@@ -24,53 +16,26 @@ class FamilyProfile extends Component {
 
     getFamily = () => {
 
-        const action = { type: 'GET_FAMILY', payload: {id: this.props.match.params.id} };
+        const action = { type: 'GET_FAMILY', payload: { id: this.props.match.params.id } };
         this.props.dispatch(action);
     }
-
-    moreInfo = () => {
-        console.log('this is more info');
-        
-    }
-
-    
-
 
     render() {
 
         return (
             <div>
-                {/* {JSON.stringify(this.props)} */}
+                {/* {JSON.stringify(this.props.reduxStore.familyReducer.familyMember)} */}
                 {/* <div className="classes-card"> */}
-                    {/* this is members from the yang family. */}
-                    {this.props.reduxStore.familyReducer.familyMember.map(member => {
-                        return(
-                            <FamilyProfileList key={member.id} member={member}/>
-                        )
-                    })}
-                      
-                        
+                {/* this is members from the yang family. */}
+                {this.props.reduxStore.familyReducer.familyMember.map(member => {
+                    return (
+                        <FamilyProfileList key={member.id} member={member} />
+                    )
+                })}
+
+
 
             </div>
-                        
-                        
-
-
-
-
-                    
-              
-           
-
-
-
-
-
-
-
-
-
-
 
         );
     }
@@ -83,10 +48,5 @@ const mapStateToProps = reduxStore => ({
 })
 
 
-
-
-
-
 export default connect(mapStateToProps)(FamilyProfile);
 
-{/* <Card className={this.state.card}> */ }
