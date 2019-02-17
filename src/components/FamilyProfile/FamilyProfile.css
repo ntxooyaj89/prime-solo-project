@@ -10,5 +10,7 @@
     /* width: 100px ; */
     float: left ;
     margin: 200x; 
+    padding: 15px;
+    border: 10px solid transparent;
     
 }

@@ -38,7 +38,7 @@ class FamilyProfileList extends Component {
     selectMemberFamily = () => {
         console.log('this is select member family');
         // 
-        this.props.history.push(`/family-profile/${this.props.member.family_id}`);
+        this.props.history.push(`/family-profile/${this.props.member.id}`);
     }
 
     handelUpdate = () => {
@@ -56,7 +56,7 @@ class FamilyProfileList extends Component {
         return (
 
             <div className="card">
-                {JSON.stringify(this.props.member.family_id)}
+                {JSON.stringify(this.props.member.id)}
 
                 <Card classes={this.state.card} onClick={this.selectMemberFamily} >
                     <CardActionArea>
