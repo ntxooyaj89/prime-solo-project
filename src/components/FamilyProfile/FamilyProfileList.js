@@ -35,12 +35,15 @@ class FamilyProfileList extends Component {
         window.location.reload();
     }
 
+    // send user to the clicked on member's family.
     selectMemberFamily = () => {
         console.log('this is select member family');
         // 
         this.props.history.push(`/family-profile/${this.props.member.id}`);
     }
 
+    
+    // this update the member status to true and false...
     handelUpdate = () => {
         console.log('this is handle update');
         const action = {
@@ -58,7 +61,7 @@ class FamilyProfileList extends Component {
             <div className="card">
                 {JSON.stringify(this.props.member.id)}
 
-                <Card classes={this.state.card} onClick={this.selectMemberFamily} >
+                <Card classes={this.state.card}>
                     <CardActionArea>
                         <CardMedia
                             component="img"
@@ -66,6 +69,9 @@ class FamilyProfileList extends Component {
                             alt="family members"
                             height="250"
                             image={this.props.member.image}
+                            // on the click of this image it will 
+                            // send user to this member's family.
+                            onClick={this.selectMemberFamily} 
                         />
 
                         <CardContent>
