@@ -139,13 +139,13 @@ class AddNewMember extends Component {
                     <input type='text' placeholder="gender" onChange={this.handleGender} />
                     <input type='text' placeholder="description" onChange={this.handleDescribtion} />
                     <input type='text' placeholder="image" onChange={this.handleImage} />
-                    <input type='text' placeholder="family name" value={this.state.newMember.family_id} onChange={this.selectFamilyName}/>
-                    {/* <select onChange={this.selectFamilyName} >
+                    {/* <input type='text' placeholder="family name" value={this.state.newMember.family_id} onChange={this.selectFamilyName}/> */}
+                    <select onChange={this.selectFamilyName} >
                         <option >Slect family name</option>
                         {this.props.reduxStore.familyReducer.myFamilyName.map((family, i) => {
-                            return <option key={i} value={family.id}>{family.family_name}</option>
+                            return <option key={i} value={family.id}>{family.family_id}</option>
                         })}
-                    </select> */}
+                    </select>
 
                     <button type="submit">Submit</button>
 
