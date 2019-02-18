@@ -18,7 +18,8 @@ router.get('/:id', (req, res) => {
         // authorization 
         pool.query(`SELECT * FROM "family" JOIN "members"
                     ON "members"."family_id" = family."id"
-                    WHERE family."id" = $1`, [req.params.id])
+                    WHERE family."id" = $1 
+                    ORDER BY "members"."id"`, [req.params.id])
 
             .then(result => {
                 res.send(result.rows)

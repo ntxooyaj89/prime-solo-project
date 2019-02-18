@@ -135,7 +135,7 @@ class AddNewMember extends Component {
 
                     <input type='text' placeholder="first name" onChange={this.handleFirstName} />
                     <input type='text' placeholder="last name" onChange={this.handleLastName} />
-                    <input type='text' placeholder="date of birth" onChange={this.handleBirthday} />
+                    <input type='date' placeholder="date of birth" onChange={this.handleBirthday} />
                     <input type='text' placeholder="gender" onChange={this.handleGender} />
                     <input type='text' placeholder="description" onChange={this.handleDescribtion} />
                     <input type='text' placeholder="image" onChange={this.handleImage} />
