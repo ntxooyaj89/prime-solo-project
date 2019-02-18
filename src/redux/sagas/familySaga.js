@@ -28,14 +28,14 @@ function* getUserFamily() {
 }
 
 // get the names of each family from database.
-function* getMemberFamilyNames() {
+function* familyName() {
     try{
-        const familyNameResponse = yield axios.get('/api/template/members');
+        const familyNameResponse = yield axios.get('/api/template/:id/family');
         const nextAction = {type: 'SET_FAMILY_NAME', payload: familyNameResponse.data};
         // this info will be sent to store in my reducer that have type of 'SET_FAMILY_NAME'
         yield put(nextAction);
     }catch(error){
-        console.log('there is error in getFamilyName saga')
+        console.log('there is error in familyName saga')
     }
 }
 
@@ -82,13 +82,22 @@ function* updateMember(action) {
 
 // this is root saga and will be listening to any components that have these type.
 function* familySaga() {
-    // this 'GET_FAMILY' gets the indiviual family 
+
+    // this gets the indiviual family of the user. 
     yield takeEvery('GET_FAMILY', getFamily);
-    // this GET_FAMILY_NAME will get names of family...
-    yield takeEvery('GET_FAMILY_NAME', getMemberFamilyNames);
+
+    // this will get each family names from database.
     yield takeEvery('GET_USER_FAMILY', getUserFamily);
+
+    yield takeEvery('GET_FAMILY_NAME', familyName);
+ 
+    // delete a family member from the database
     yield takeEvery('DELETE_MEMBER', deleteMember);
+
+    // add another member to the database
     yield takeEvery('ADD_MEMBER', addMember);
+
+    // made an update to the database
     yield takeEvery('UPDATE_MEMBER', updateMember);
    
 }

@@ -21,25 +21,19 @@ class AddNewMember extends Component {
     }
 
     componentDidMount() {
+
+        this.getFamilyName()
         
-        // this.getFamilyName();
-        this.getFamily();
 
     }
 
-    //this gets the family name
-    // getFamilyName = () => {
-    //     const action = { type: 'GET_FAMILY_NAME' };
-    //     this.props.dispatch(action);
-    // }
-
-
-    //this gets the family members by user's id
-    getFamily = () => {
-
-        const action = { type: 'GET_FAMILY', payload: { id: this.props.match.params.id }  };
+    getFamilyName = () => {
+        console.log('this gets the name of each family in database.');
+        const action = {type: 'GET_FAMILY_NAME'}
         this.props.dispatch(action);
     }
+
+    
 
     // this handle the member
     handleFirstName = event => {
@@ -64,7 +58,7 @@ class AddNewMember extends Component {
 
         })
     }
-    
+
 
     // this handle the member birthday
     handleBirthday = event => {
@@ -125,8 +119,8 @@ class AddNewMember extends Component {
             
 
         })
-        // reload the page to show new member is added
-        window.location.reload();
+        
+        
     }
     // this takes all the info and send to reducer saga to insert into database.
     addNewMember = event => {
@@ -140,12 +134,13 @@ class AddNewMember extends Component {
 
         return (
 
+           
             <div>
-
-                {JSON.stringify(this.props.reduxStore.familyReducer.myFamilyName)}
+                {/* {JSON.stringify(this.props.reduxStore.familyReducer.myFamilyName)} */}
                 {JSON.stringify(this.props.reduxStore.familyReducer.nameOfFamily)}
 
                 <form onSubmit={this.addNewMember}>
+                    <header className="header">Add A New Member</header>
 
                     <input type='text' placeholder="first name" onChange={this.handleFirstName} />
                     <input type='text' placeholder="last name" onChange={this.handleLastName} />
@@ -154,7 +149,7 @@ class AddNewMember extends Component {
                     <input type='text' placeholder="description" onChange={this.handleDescribtion} />
                     <input type='text' placeholder="image" onChange={this.handleImage} />
                     {/* <input type='text' placeholder="family name" value={this.state.newMember.family_id} onChange={this.selectFamilyName}/> */}
-                    <select onChange={this.selectFamilyName} >
+                    <select onChange={this.selectFamilyName} value={this.state.newMember.family_id} >
                         <option >Slect family name</option>
                         {this.props.reduxStore.familyReducer.nameOfFamily.map((family, i) => {
                             return <option key={i} value={family.id}>{family.family_name}</option>

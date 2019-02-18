@@ -21,15 +21,16 @@ const Nav = (props) => (
       {props.user.id && (
         <>
 
-        
+
         {/* **** this is the info page that comes with the project, I cancel out becuase I'll will  */}
         {/* not use it for demo. ***** */}
           {/* <Link className="nav-link" to="/info">
             Info Page
           </Link> */}
-          <LogOutButton className="nav-link"/>
+         
           <Link className="nav-link" to="/family-tree">Family Tree</Link>
           <Link className="nav-link" to="/add-member">Add New Member</Link>
+          <LogOutButton className="nav-link" />
           
           {/* <Link className="nav-link" to="/family-profile/2">Chang</Link> */}
           

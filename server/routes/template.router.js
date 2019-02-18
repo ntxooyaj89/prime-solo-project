@@ -34,9 +34,9 @@ router.get('/:id', (req, res) => {
 });
 
 //get all the members of in the database
-router.get('/members', (req, res) => {
+router.get('/:id/family', (req, res) => {
     console.log('this is in get member')
-    const queryText = 'SELECT * FROM "members";'; 
+    const queryText = 'SELECT * FROM family'; 
     pool.query(queryText)
     .then(result => {
         res.send(result.rows);
