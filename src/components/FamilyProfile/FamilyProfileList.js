@@ -2,21 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './FamilyProfile.css';
 import Card from '@material-ui/core/Card';
-import { CardActionArea, CardMedia, CardContent, Typography, CardActions, withStyles } from '@material-ui/core';
+import { CardActionArea, CardMedia, CardContent, Typography, CardActions} from '@material-ui/core';
 import Button from '@material-ui/core/Button';
-// import classNames from 'classnames';
 import moment from 'moment';
 
-// const style ={
-//     card: {
-//         maxWidth: '300px',
-//         // padding: '15px',
-//         margin: '10px'
-//     },
-//     media: {
-//          height: '150px', 
-//     },
-// };
 
 
 class FamilyProfileList extends Component {
@@ -48,7 +37,7 @@ class FamilyProfileList extends Component {
     // send user to the clicked on member's family.
     selectMemberFamily = (event) => {
         console.log('this is select member family');
-        // 
+        // clicking this send user to the member's family.
         this.props.history.push(`/family-profile/${event.target.value}`);
     }
 

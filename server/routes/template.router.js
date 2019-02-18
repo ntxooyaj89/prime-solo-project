@@ -9,7 +9,7 @@ const router = express.Router();
 
 // this get each family by the family.id.
 router.get('/:id', (req, res) => {
-
+    
     // only need authentication on routes that are protected 
     // only allow person who is authenticated.
 
@@ -33,20 +33,20 @@ router.get('/:id', (req, res) => {
 
 });
 
-// get all the members of in the database
-// router.get('/members', (req, res) => {
-//     console.log('this is in get member')
-//     const queryText = 'SELECT * FROM "members" '; 
-//     pool.query(queryText)
-//     .then(result => {
-//         res.send(result.rows);
-//     }).catch(error => {
-//         console.log('there is an error in get member router', error)
-//         res.sendStatus(500);
-//     })
+//get all the members of in the database
+router.get('/members', (req, res) => {
+    console.log('this is in get member')
+    const queryText = 'SELECT * FROM "members";'; 
+    pool.query(queryText)
+    .then(result => {
+        res.send(result.rows);
+    }).catch(error => {
+        console.log('there is an error in get member router', error)
+        res.sendStatus(500);
+    })
         
 
-// })
+})
 
 
 // this get the user's family

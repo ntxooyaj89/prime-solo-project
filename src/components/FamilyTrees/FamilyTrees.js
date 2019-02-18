@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
 
+
 class FamilyTree extends Component {
 
     constructor(props) {
@@ -46,10 +47,13 @@ class FamilyTree extends Component {
     render() {
 
         return(
+            
+              
+        
+          
            
            <form>
                {JSON.stringify(this.props.reduxStore.familyReducer.myFamilyName)}
-               <h1>FAMILY SIRCLE</h1>
 
                 <select onChange={this.handleUserFamily} >
                     <option value="">Select Family</option>
@@ -59,6 +63,7 @@ class FamilyTree extends Component {
                 </select>
            
             </form>
+           
             
             
                

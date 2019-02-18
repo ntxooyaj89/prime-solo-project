@@ -9,7 +9,7 @@ import {
 import {connect} from 'react-redux';
 
 import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
+// import Footer from '../Footer/Footer';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
@@ -87,7 +87,7 @@ class App extends Component {
             <Route render={() => <h1>404</h1>} />
           </Switch>
           
-          <Footer />
+          {/* <Footer /> */}
           
          
         </div>

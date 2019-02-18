@@ -12,8 +12,10 @@ class FamilyProfile extends Component {
 
     componentDidMount() {
         this.getFamily();
+        // this.getUserFamily();
     }
 
+    // get the family of 
     getFamily = () => {
 
         const action = { type: 'GET_FAMILY', payload: { id: this.props.match.params.id } };

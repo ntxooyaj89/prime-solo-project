@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import axios from 'axios';
+
 
 
 class AddNewMember extends Component {
@@ -16,9 +16,6 @@ class AddNewMember extends Component {
                 description: '',
                 image: '',
                 family_id: '',
-              
-
-
             }
         }
     }
@@ -30,19 +27,21 @@ class AddNewMember extends Component {
 
     }
 
-    // this gets the family name
+    //this gets the family name
     // getFamilyName = () => {
     //     const action = { type: 'GET_FAMILY_NAME' };
     //     this.props.dispatch(action);
     // }
 
-    //this gets the family members
+
+    //this gets the family members by user's id
     getFamily = () => {
 
         const action = { type: 'GET_FAMILY', payload: { id: this.props.match.params.id }  };
         this.props.dispatch(action);
     }
 
+    // this handle the member
     handleFirstName = event => {
         console.log('this is handleMemberFirstName');
         this.setState({
@@ -54,6 +53,7 @@ class AddNewMember extends Component {
         })
     }
 
+    // this handle the lastname of member
     handleLastName = event => {
         console.log('this is handle member last name');
         this.setState({
@@ -64,7 +64,9 @@ class AddNewMember extends Component {
 
         })
     }
+    
 
+    // this handle the member birthday
     handleBirthday = event => {
         this.setState({
             newMember: {
@@ -75,6 +77,8 @@ class AddNewMember extends Component {
         })
     }
 
+
+    // this handle the gender of the member
     handleGender = event => {
         this.setState({
             newMember: {
@@ -85,6 +89,8 @@ class AddNewMember extends Component {
         })
     }
 
+
+    // this handle the description of the member
     handleDescribtion = event => {
         this.setState({
             newMember: {
@@ -95,16 +101,20 @@ class AddNewMember extends Component {
         })
     }
 
+
+    // this handle the image of the member
     handleImage = event => {
         this.setState({
             newMember: {
                 ...this.state.newMember,
                 image: event.target.value,
             }
-
         })
-    }
+        
 
+    }
+    
+    // this select the name of which family to insert the member into.
     selectFamilyName = (event) => {
         console.log('this is select family name');
         this.setState({
@@ -112,10 +122,13 @@ class AddNewMember extends Component {
                 ...this.state.newMember,
                 family_id: event.target.value,
             }
+            
 
         })
+        // reload the page to show new member is added
+        window.location.reload();
     }
-
+    // this takes all the info and send to reducer saga to insert into database.
     addNewMember = event => {
         console.log('this is addNewMember');
         event.preventDefault();
@@ -129,7 +142,8 @@ class AddNewMember extends Component {
 
             <div>
 
-                {JSON.stringify(this.props.reduxStore.familyReducer.familyMember)}
+                {JSON.stringify(this.props.reduxStore.familyReducer.myFamilyName)}
+                {JSON.stringify(this.props.reduxStore.familyReducer.nameOfFamily)}
 
                 <form onSubmit={this.addNewMember}>
 
@@ -142,8 +156,8 @@ class AddNewMember extends Component {
                     {/* <input type='text' placeholder="family name" value={this.state.newMember.family_id} onChange={this.selectFamilyName}/> */}
                     <select onChange={this.selectFamilyName} >
                         <option >Slect family name</option>
-                        {this.props.reduxStore.familyReducer.myFamilyName.map((family, i) => {
-                            return <option key={i} value={family.id}>{family.family_id}</option>
+                        {this.props.reduxStore.familyReducer.nameOfFamily.map((family, i) => {
+                            return <option key={i} value={family.id}>{family.family_name}</option>
                         })}
                     </select>
 

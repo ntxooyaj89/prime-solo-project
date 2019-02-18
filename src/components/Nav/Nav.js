@@ -20,11 +20,15 @@ const Nav = (props) => (
       {/* Show the link to the info page and the logout button if the user is logged in */}
       {props.user.id && (
         <>
-          <Link className="nav-link" to="/info">
+
+        
+        {/* **** this is the info page that comes with the project, I cancel out becuase I'll will  */}
+        {/* not use it for demo. ***** */}
+          {/* <Link className="nav-link" to="/info">
             Info Page
-          </Link>
+          </Link> */}
           <LogOutButton className="nav-link"/>
-          <Link className="nav-link" to="/family-profile/1">Family Profile</Link>
+          <Link className="nav-link" to="/family-tree">Family Tree</Link>
           <Link className="nav-link" to="/add-member">Add New Member</Link>
           
           {/* <Link className="nav-link" to="/family-profile/2">Chang</Link> */}
@@ -32,9 +36,11 @@ const Nav = (props) => (
         </>
       )}
       {/* Always show this link since the about page is not protected */}
-      <Link className="nav-link" to="/about">
+
+      {/* **** this is about page I cancel out because I will not use it for demo **** */}
+      {/* <Link className="nav-link" to="/about">
         About
-      </Link>
+      </Link> */}
     </div>
   </div>
 );

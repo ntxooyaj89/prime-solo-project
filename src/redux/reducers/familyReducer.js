@@ -8,9 +8,17 @@ const familyMember = (state = [], action) =>{
     return state;
 };
 
-// this reducer all family_Names from family table
+// this reducer holds family_Names of the user.
 const myFamilyName = (state = [], action) => {
     if(action.type === 'SET_USER_FAMILY'){
+        return action.payload;
+    }
+    return state;
+}
+
+// holds the name of each family from database. 
+const nameOfFamily = (state = [], action) => {
+    if(action.type === 'SET_FAMILY_NAME'){
         return action.payload;
     }
     return state;
@@ -30,5 +38,6 @@ const memberOfFamily = (state = [], action) => {
 export default combineReducers({
     familyMember,
     myFamilyName,
-    memberOfFamily
+    memberOfFamily,
+    nameOfFamily
 })
