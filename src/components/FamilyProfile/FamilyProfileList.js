@@ -59,7 +59,7 @@ class FamilyProfileList extends Component {
         return (
 
             <div className="card">
-                {JSON.stringify(this.props.member.have_we_met)}
+                {/* {JSON.stringify(this.props.member.have_we_met)} */}
 
                 <Card className={this.state.card}>
                     <CardActionArea>
@@ -86,7 +86,7 @@ class FamilyProfileList extends Component {
 
 
                             <Typography component="p">
-                                Date of Birth: {moment(this.props.member.date_of_birth).format("MMM D YYYY")}</Typography>
+                                Date of Birth: {moment(this.props.member.date_of_birth).format("MMMM Do YYYY")}</Typography>
 
                             <Typography component="p">
                                 Gender: {this.props.member.gender}</Typography>
@@ -129,4 +129,4 @@ const mapReduxStoreToProps = (reduxStore) => ({
 
 // const StyleFamilyProfileList = withStyles(style)(FamilyProfileList);
 
-export default connect()(FamilyProfileList);
+export default connect(mapReduxStoreToProps)(FamilyProfileList);

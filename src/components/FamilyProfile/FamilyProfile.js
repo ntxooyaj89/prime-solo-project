@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './FamilyProfile.css';
-import Card from '@material-ui/core/Card';
 import FamilyProfileList from './FamilyProfileList';
 
 

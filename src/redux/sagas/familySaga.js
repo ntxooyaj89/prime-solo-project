@@ -86,9 +86,10 @@ function* familySaga() {
     // this gets the indiviual family of the user. 
     yield takeEvery('GET_FAMILY', getFamily);
 
-    // this will get each family names from database.
+    // this will get user's familys from database.
     yield takeEvery('GET_USER_FAMILY', getUserFamily);
 
+    // get the name of family in the database.
     yield takeEvery('GET_FAMILY_NAME', familyName);
  
     // delete a family member from the database
