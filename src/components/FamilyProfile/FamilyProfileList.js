@@ -5,6 +5,7 @@ import Card from '@material-ui/core/Card';
 import { CardActionArea, CardMedia, CardContent, Typography, CardActions } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 // import classNames from 'classnames';
+import moment from 'moment';
 
 
 
@@ -14,8 +15,8 @@ class FamilyProfileList extends Component {
         super(props);
         this.state = {
             add: true,
-            card: { maxWidth: 150, },
-            media: { height: 150, paddingTop: '56.25%' },
+            card: { maxWidth: '150', },
+            media: { height: '150', paddingTop: '56.25%' },
             actions: { display: 'flex' },
             expand: { transform: 'rotate(0deg)', marginLeft: 'auto' },
             expandOpen: { transform: 'rotate(180deg)' }
@@ -36,10 +37,10 @@ class FamilyProfileList extends Component {
     }
 
     // send user to the clicked on member's family.
-    selectMemberFamily = () => {
+    selectMemberFamily = (event) => {
         console.log('this is select member family');
         // 
-        this.props.history.push(`/family-profile/${this.props.member.id}`);
+        this.props.history.push(`/family-profile/${event.target.value}`);
     }
 
     
@@ -59,7 +60,7 @@ class FamilyProfileList extends Component {
         return (
 
             <div className="card">
-                {JSON.stringify(this.props.member.id)}
+                {JSON.stringify(this.props.member.family_id)}
 
                 <Card classes={this.state.card}>
                     <CardActionArea>
@@ -69,6 +70,7 @@ class FamilyProfileList extends Component {
                             alt="family members"
                             height="250"
                             image={this.props.member.image}
+                            value={this.props.family_id}
                             // on the click of this image it will 
                             // send user to this member's family.
                             onClick={this.selectMemberFamily} 
@@ -85,7 +87,7 @@ class FamilyProfileList extends Component {
 
 
                             <Typography component="p">
-                                {this.props.member.date_of_birth}</Typography>
+                                {moment(this.props.member.date_of_birth).format("MMM D YYYY")}</Typography>
 
                             <Typography component="p">
                                 {this.props.member.gender}</Typography>
