@@ -30,7 +30,7 @@ class FamilyProfile extends Component {
                 {/* this is members from the yang family. */}
                 {this.props.reduxStore.familyReducer.familyMember.map(member => {
                     return (
-                        <FamilyProfileList key={member.id} member={member} />
+                        <FamilyProfileList history={this.props.history} key={member.id} member={member} />
                     )
                 })}
 

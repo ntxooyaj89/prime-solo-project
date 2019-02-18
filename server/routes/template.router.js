@@ -16,6 +16,12 @@ router.get('/:id', (req, res) => {
     if (req.isAuthenticated()) {
         console.log('req.user', req.user);
         // authorization 
+        // Junction table (one person in multiple families)
+        // pool.query(`SELECT * FROM "family" JOIN "members"
+        //             ON "members"."id" = family_member."member_id"
+        //             JOIN "family" ON "family"."id" = "family_member"."family_id"
+        //             WHERE family."id" = $1 
+        //             ORDER BY "members"."id"`, [req.params.id])
         pool.query(`SELECT * FROM "family" JOIN "members"
                     ON "members"."family_id" = family."id"
                     WHERE family."id" = $1 

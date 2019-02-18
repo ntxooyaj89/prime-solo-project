@@ -38,7 +38,7 @@ class FamilyProfileList extends Component {
     selectMemberFamily = (event) => {
         console.log('this is select member family');
         // clicking this send user to the member's family.
-        this.props.history.push(`/family-profile/${event.target.value}`);
+        this.props.history.push(`/user-profile/${this.props.member.id}`);
     }
 
 
@@ -86,7 +86,7 @@ class FamilyProfileList extends Component {
 
 
                             <Typography component="p">
-                                Date of Birth: {moment(this.props.member.date_of_birth).format("MMMM Do YYYY")}</Typography>
+                                Date of Birth: {moment(this.props.member.date_of_birth).format("MMMM D YYYY")}</Typography>
 
                             <Typography component="p">
                                 Gender: {this.props.member.gender}</Typography>
