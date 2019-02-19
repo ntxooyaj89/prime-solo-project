@@ -35,7 +35,7 @@ class FamilyProfileList extends Component {
     }
 
     // send user to the clicked on member's family.
-    selectMemberFamily = (event) => {
+    selectMember = () => {
         console.log('this is select member family');
         // clicking this send user to the member's family.
         this.props.history.push(`/user-profile/${this.props.member.id}`);
@@ -69,10 +69,9 @@ class FamilyProfileList extends Component {
                             alt="family members"
                             height="250"
                             image={this.props.member.image}
-                            value={this.props.family_id}
                             // on the click of this image it will 
                             // send user to this member's family.
-                            onClick={this.selectMemberFamily}
+                            onClick={this.selectMember}
                         />
 
                         <CardContent>

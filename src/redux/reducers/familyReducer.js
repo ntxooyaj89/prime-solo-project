@@ -33,11 +33,19 @@ const memberOfFamily = (state = [], action) => {
 }
 
 
+const memberDetail = (state = [], action) => {
+    if(action.type === 'SET_MEMBER_DETAIL'){
+        return action.payload;
+    }
+    return state;
+}
+
 
 // this is the combing the reducer so components can refrence when they need these reducer.
 export default combineReducers({
     familyMember,
     myFamilyName,
     memberOfFamily,
-    nameOfFamily
+    nameOfFamily,
+    memberDetail
 })

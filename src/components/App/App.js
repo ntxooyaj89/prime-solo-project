@@ -17,8 +17,9 @@ import InfoPage from '../InfoPage/InfoPage';
 import './App.css';
 import FamilyProfile from '../FamilyProfile/FamilyProfile';
 import AddNewMember from '../AddNewMember/AddNewMember';
-import ChangProfile from '../ChangProfile/ChangProfile';
+// import ChangProfile from '../ChangProfile/ChangProfile';
 import FamilyTrees from '../FamilyTrees/FamilyTrees';
+import UserProfile from '../UserProfile/UserProfile';
 // import FamilyTrees from '../FamilyTrees/FamilyTrees';
 
 class App extends Component {
@@ -71,8 +72,8 @@ class App extends Component {
 
             <ProtectedRoute
               exact
-              path="/family-profile/:id"
-              component={ChangProfile}
+              path="/user-profile/:id"
+              component={UserProfile}
             />
 
             <ProtectedRoute

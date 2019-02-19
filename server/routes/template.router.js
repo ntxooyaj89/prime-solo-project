@@ -39,6 +39,20 @@ router.get('/:id', (req, res) => {
 
 });
 
+router.get('/:id', (req, res) => {
+    console.log('this is in router get member detail');
+    const queryText = `SELECT * FROM "members" JOIN "family"
+                       ON "members"."family_id" = family."id"
+                       WHERE members."id" = $1;`;
+    pool.query(queryText, [req.params.id])   
+    .then(result => {
+        res.send(result.rows);
+    }).catch(error => {
+        console.log('there is errror in get member detail', error)
+        res.sendStatus(500);
+    })                
+})
+
 //get all the members of in the database
 router.get('/:id/family', (req, res) => {
     console.log('this is in get member')
@@ -91,6 +105,7 @@ router.delete('/:id', (req, res) => {
             res.sendStatus(500);
         });
 });
+
 
 router.put('/:id', (req, res) => {
     const queryText = `UPDATE members SET "have_we_met" = 'true' 

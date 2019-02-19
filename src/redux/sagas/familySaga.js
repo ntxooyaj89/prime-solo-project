@@ -65,6 +65,18 @@ function* deleteMember(action) {
     }
 }
 
+// get each individual member's details.
+function* getMemberDetail(action){
+    try{
+        const memberId = action.payload.memberId
+        yield axios.get(`/api/template/${memberId}`);
+        const nextAction = {type: 'SET_MEMBER_DETAIL'};
+        yield put(nextAction);
+    } catch (error) {
+        console.log('this is get member detail saga error', error);
+    }
+
+}
 
 
 
@@ -100,6 +112,8 @@ function* familySaga() {
 
     // made an update to the database
     yield takeEvery('UPDATE_MEMBER', updateMember);
+
+    yield takeEvery('GET_MEMBER_DETAIL', getMemberDetail)
    
 }
 
