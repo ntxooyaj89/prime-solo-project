@@ -78,6 +78,16 @@ function* getMemberDetail(action){
 
 }
 
+function* getMemberFamily() {
+    try{
+        const response = yield axios.get(`/api/template/member-family/:id`);
+        const nextAction = {type: 'SET_MEMBER_FAMILY', payload: response.data};
+        yield put(nextAction);
+    }catch (error){
+        console.log('this is get member family saga', error);
+    }
+}
+
 
 
 function* updateMember(action) {
@@ -113,7 +123,11 @@ function* familySaga() {
     // made an update to the database
     yield takeEvery('UPDATE_MEMBER', updateMember);
 
-    yield takeEvery('GET_MEMBER_DETAIL', getMemberDetail)
+    // this gets the detail of each member that's user clicked on.
+    yield takeEvery('GET_MEMBER_DETAIL', getMemberDetail);
+
+    // get the family of member that user clicked on.
+    yield takeEvery('GET_MEMBER_FAMILY', getMemberFamily);
    
 }
 

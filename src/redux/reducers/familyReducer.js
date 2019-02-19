@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { stat } from 'fs';
 
 // this reducer gets the yang family
 const familyMember = (state = [], action) =>{
@@ -19,6 +20,13 @@ const myFamilyName = (state = [], action) => {
 // holds the name of each family from database. 
 const nameOfFamily = (state = [], action) => {
     if(action.type === 'SET_FAMILY_NAME'){
+        return action.payload;
+    }
+    return state;
+}
+
+const memberFamily = (state = [], action ) => {
+    if(action.type === 'SET_MEMBER_FAMILY'){
         return action.payload;
     }
     return state;
@@ -47,5 +55,6 @@ export default combineReducers({
     myFamilyName,
     memberOfFamily,
     nameOfFamily,
-    memberDetail
+    memberDetail,
+    memberFamily
 })

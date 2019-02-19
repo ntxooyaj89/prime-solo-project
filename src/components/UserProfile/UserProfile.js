@@ -23,7 +23,9 @@ class UserProfile extends Component {
 
     componentDidMount = () => {
         console.log('this has mounted in user profile');
+        // gets detail of the member that's clicked on.
         this.getMemberDetail();
+        this.getMemberFamily();
     }
 
     // get the detail of the member that's clicked on.
@@ -31,6 +33,13 @@ class UserProfile extends Component {
         console.log('this is inside getMemberDetail');
         const memberId = this.props.match.params.id;
         const action = { type: 'GET_MEMBER_DETAIL', payload: { memberId: memberId } }
+        this.props.dispatch(action);
+    }
+
+    getMemberFamily = () => {
+        console.log('this is inside get member family');
+        const action = {type: 'GET_MEMBER_FAMILY'};
+        
         this.props.dispatch(action);
     }
 

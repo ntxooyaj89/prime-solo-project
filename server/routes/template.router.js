@@ -15,13 +15,6 @@ router.get('/:id', (req, res) => {
 
     if (req.isAuthenticated()) {
         console.log('req.user', req.user);
-        // authorization 
-        // Junction table (one person in multiple families)
-        // pool.query(`SELECT * FROM "family" JOIN "members"
-        //             ON "members"."id" = family_member."member_id"
-        //             JOIN "family" ON "family"."id" = "family_member"."family_id"
-        //             WHERE family."id" = $1 
-        //             ORDER BY "members"."id"`, [req.params.id])
         pool.query(`SELECT * FROM "family" JOIN "members"
                     ON "members"."family_id" = family."id"
                     WHERE family."id" = $1 
@@ -38,6 +31,23 @@ router.get('/:id', (req, res) => {
     }
 
 });
+
+
+// this gets the member's family when the user clicked on.
+router.get('/member-family/:id', (req, res) => {
+    const queryText = `SELECT * FROM "members" JOIN "family"
+                       ON "members".family_id = "family"."id"
+                       WHERE family.id;`;
+    pool.query(queryText)
+    .then(result => {
+        res.send(result.rows);
+    }).catch(error => {
+        console.log('there is error in get member family router', error);
+        res.sendStatus(500);
+    })
+
+})
+
 
 router.get('/family/:id', (req, res) => {
     console.log('this is in router get member detail', req.params);
@@ -56,6 +66,7 @@ router.get('/family/:id', (req, res) => {
         res.sendStatus(500);
     })                
 })
+
 
 //get all the members of in the database
 router.get('/:id/family', (req, res) => {
@@ -159,3 +170,11 @@ module.exports = router;
 ON "members"."family_id" = family."id"; `
 
     // `SELECT * FROM "members";`
+
+    // authorization 
+        // Junction table (one person in multiple families)
+        // pool.query(`SELECT * FROM "family" JOIN "members"
+        //             ON "members"."id" = family_member."member_id"
+        //             JOIN "family" ON "family"."id" = "family_member"."family_id"
+        //             WHERE family."id" = $1 
+        //             ORDER BY "members"."id"`, [req.params.id])
