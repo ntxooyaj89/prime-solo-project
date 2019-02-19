@@ -69,8 +69,8 @@ function* deleteMember(action) {
 function* getMemberDetail(action){
     try{
         const memberId = action.payload.memberId
-        yield axios.get(`/api/template/${memberId}`);
-        const nextAction = {type: 'SET_MEMBER_DETAIL'};
+        const response = yield axios.get(`/api/template/${memberId}`);
+        const nextAction = {type: 'SET_MEMBER_DETAIL', payload: response.data};
         yield put(nextAction);
     } catch (error) {
         console.log('this is get member detail saga error', error);
