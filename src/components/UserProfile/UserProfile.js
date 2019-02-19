@@ -26,7 +26,7 @@ class UserProfile extends Component {
         this.getMemberDetail();
     }
 
-
+    // get the detail of the member that's clicked on.
     getMemberDetail = () => {
         console.log('this is inside getMemberDetail');
         const memberId = this.props.match.params.id;
@@ -34,6 +34,15 @@ class UserProfile extends Component {
         this.props.dispatch(action);
     }
 
+    selectMember = () => {
+        console.log('this is select member family');
+        // clicking this send user to the member's family.
+        this.props.history.push(`/user-profile/${this.props.member.id}`);
+    }
+
+    
+
+    
 
     render() {
         return (
@@ -52,6 +61,7 @@ class UserProfile extends Component {
                                         alt="person of family"
                                         height="250"
                                         image={person.image}
+                                        onClick={this.selectMember}
                                     />
                                     <CardContent>
                                     <Typography gutterBottom variant="h5" component="h2">
@@ -78,7 +88,7 @@ class UserProfile extends Component {
                                     </Typography>
 
                                     <Typography>
-                                        {JSON.stringify(person.have_we_met)}
+                                        I've met this member: {JSON.stringify(person.have_we_met)}
 
                                     </Typography>
 
