@@ -69,7 +69,7 @@ function* deleteMember(action) {
 function* getMemberDetail(action){
     try{
         const memberId = action.payload.memberId
-        const response = yield axios.get(`/api/template/${memberId}`);
+        const response = yield axios.get(`/api/template/family/${memberId}`);
         const nextAction = {type: 'SET_MEMBER_DETAIL', payload: response.data};
         yield put(nextAction);
     } catch (error) {

@@ -39,14 +39,15 @@ router.get('/:id', (req, res) => {
 
 });
 
-router.get('/:id', (req, res) => {
-    console.log('this is in router get member detail');
+router.get('/family/:id', (req, res) => {
+    console.log('this is in router get member detail', req.params);
     // gets the detail of the member.
+
     const queryText = `SELECT * FROM "family_member" JOIN "members"
                        ON "members"."id" = "family_member"."member_id"
                        JOIN "family" ON "family"."id" = "family_member"."family_id"
-                       WHERE family."id" = $1 
-                       ORDER BY "members"."id" = $2;`;
+                       WHERE members."id" = $1 
+                       ORDER BY "members"."id";`;
     pool.query(queryText, [req.params.id])   
     .then(result => {
         res.send(result.rows);

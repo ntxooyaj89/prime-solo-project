@@ -49,7 +49,7 @@ class UserProfile extends Component {
             <div>
 
                 {/* {JSON.stringify(this.props.match.params)} */}
-                {/* {JSON.stringify(this.props.reduxStore.familyReducer.memberDetail)} */}
+                {JSON.stringify(this.props.reduxStore.familyReducer.memberDetail)}
                 {this.props.reduxStore.familyReducer.memberDetail.map(person => {
                     return (
                         <div className="card" key={person.id}>
