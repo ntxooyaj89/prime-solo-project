@@ -4,6 +4,7 @@ import Card from '@material-ui/core/Card';
 import { CardActionArea, CardMedia, CardContent, Typography, CardActions } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import moment from 'moment';
+// import UserProfileFamily from './UserProfileFamily';
 import './UserProfile.css';
 
 
@@ -38,7 +39,8 @@ class UserProfile extends Component {
 
     getMemberFamily = () => {
         console.log('this is inside get member family');
-        const action = {type: 'GET_MEMBER_FAMILY'};
+        const memberId = this.props.match.params.id
+        const action = {type: 'GET_MEMBER_FAMILY', payload: {memberId: memberId}};
         
         this.props.dispatch(action);
     }
@@ -58,10 +60,10 @@ class UserProfile extends Component {
             <div>
 
                 {/* {JSON.stringify(this.props.match.params)} */}
-                {JSON.stringify(this.props.reduxStore.familyReducer.memberDetail)}
+                {/* {JSON.stringify(this.props.reduxStore.familyReducer.memberFamily)} */}
                 {this.props.reduxStore.familyReducer.memberDetail.map(person => {
                     return (
-                        <div className="card" key={person.id}>
+                        <div className="image" key={person.id}>
                             <Card className={this.state.card}>
                                 <CardActionArea>
                                     <CardMedia
@@ -116,6 +118,91 @@ class UserProfile extends Component {
 
                             </Card>
                         </div>
+                    )
+                })}
+                         
+           
+
+                    {/* {JSON.stringify(this.props.match.params)} */}
+                    {/* {JSON.stringify(this.props.reduxStore.familyReducer.memberFamily)} */}
+                    {this.props.reduxStore.familyReducer.memberFamily.map(member => {
+                        return (
+                            <div className="image" key={member.id}>
+                                <Card className={this.state.card}>
+                                    <CardActionArea>
+                                        <CardMedia
+                                            component="img"
+                                            className={this.state.media}
+                                            alt="person of family"
+                                            height="250"
+                                            image={member.image}
+                                            onClick={this.selectMember}
+                                        />
+                                        <CardContent>
+                                            <Typography gutterBottom variant="h5" component="h2">
+                                                {member.first_name}
+                                            </Typography>
+
+                                            <Typography gutterBottom variant="h5" component="h2">
+                                                {member.last_name}
+                                            </Typography>
+
+                                            <Typography>
+                                                Date of Birth: {moment(member.date_of_birth).format("MMMM D YYYY")}
+
+                                            </Typography>
+
+                                            <Typography>
+                                                {member.gender}
+
+                                            </Typography>
+
+                                            <Typography>
+                                                {member.description}
+
+                                            </Typography>
+
+                                            <Typography>
+                                                I've met this member: {JSON.stringify(member.have_we_met)}
+
+                                            </Typography>
+
+                                        </CardContent>
+
+                                    </CardActionArea>
+                                    <CardActions>
+
+
+                                        <Button size="small" color="primary" onClick={this.handelDelete}>Delete Member</Button>
+                                        <Button size="small" color="primary" onClick={this.handelUpdate}>We've met</Button>
+
+
+                                    </CardActions>
+
+
+                                </Card>
+                            </div>
+                        )
+                    })}
+
+                </div>
+            
+
+
+
+        )
+
+        
+                   
+
+                            
+
+                  
+                           
+                        
+                      
+                            
+                        
                        
                         
 
@@ -124,15 +211,13 @@ class UserProfile extends Component {
 
 
 
-                    )
+                    
                    
-                })}
-            </div>
+            
 
 
 
-
-        )
+        
     }
 }
 

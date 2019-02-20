@@ -122,14 +122,18 @@ class AddNewMember extends Component {
         
         
     }
-    
+
     // this takes all the info and send to reducer saga to insert into database.
     addNewMember = event => {
         console.log('this is addNewMember');
         event.preventDefault();
         const action = { type: 'ADD_MEMBER', payload: this.state.newMember}
         this.props.dispatch(action);
+        
+        window.location.reload();
     }
+
+
 
     render() {
 

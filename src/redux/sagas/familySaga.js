@@ -2,7 +2,7 @@ import axios from 'axios';
 import { put, takeEvery } from 'redux-saga/effects';
 
 
-// Saga get each indiviual family by their id.
+// Saga get each indiviual family that's tie to the user.
 function* getFamily(action) {
     try {
         // with the id matching 
@@ -78,9 +78,10 @@ function* getMemberDetail(action){
 
 }
 
-function* getMemberFamily() {
+function* getMemberFamily(action) {
     try{
-        const response = yield axios.get(`/api/template/member-family/:id`);
+        const memberId = action.payload.memberId
+        const response = yield axios.get(`/api/template/${memberId}/member-family`);
         const nextAction = {type: 'SET_MEMBER_FAMILY', payload: response.data};
         yield put(nextAction);
     }catch (error){

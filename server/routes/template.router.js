@@ -23,7 +23,7 @@ router.get('/:id', (req, res) => {
             .then(result => {
                 res.send(result.rows)
             }).catch(error => {
-                console.log('this is error in router.get', error);
+                console.log('this is error in get family router', error);
                 res.sendStatus(500);
             });
     } else {
@@ -34,11 +34,11 @@ router.get('/:id', (req, res) => {
 
 
 // this gets the member's family when the user clicked on.
-router.get('/member-family/:id', (req, res) => {
+router.get('/:id/member-family', (req, res) => {
     const queryText = `SELECT * FROM "members" JOIN "family"
                        ON "members".family_id = "family"."id"
-                       WHERE family.id;`;
-    pool.query(queryText)
+                       WHERE "family"."id" = $1`;
+    pool.query(queryText, [req.params.id]  )
     .then(result => {
         res.send(result.rows);
     }).catch(error => {
@@ -51,13 +51,14 @@ router.get('/member-family/:id', (req, res) => {
 
 router.get('/family/:id', (req, res) => {
     console.log('this is in router get member detail', req.params);
-    // gets the detail of the member.
+    
+    // gets the detail of the member clicked on.
 
     const queryText = `SELECT * FROM "family_member" JOIN "members"
                        ON "members"."id" = "family_member"."member_id"
                        JOIN "family" ON "family"."id" = "family_member"."family_id"
                        WHERE members."id" = $1 
-                       ORDER BY "members"."id";`;
+                       ORDER BY "family"."id";`;
     pool.query(queryText, [req.params.id])   
     .then(result => {
         res.send(result.rows);
