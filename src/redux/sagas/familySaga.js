@@ -33,7 +33,7 @@ function* getUserFamily() {
 // get the names of each family from database.
 function* familyName() {
     try{
-        const familyNameResponse = yield axios.get('/api/template/:id/family');
+        const familyNameResponse = yield axios.get('/api/template/family-name/:id/');
         const nextAction = {type: 'SET_FAMILY_NAME', payload: familyNameResponse.data};
         // this info will be sent to store in my reducer that have type of 'SET_FAMILY_NAME'
         yield put(nextAction);
@@ -94,7 +94,7 @@ function* getMemberDetail(action){
 function* getMemberFamily(action) {
     try{
         const memberId = action.payload.memberId
-        const response = yield axios.get(`/api/template/${memberId}/member-family`);
+        const response = yield axios.get(`/api/template/member-family/${memberId}`);
         const nextAction = {type: 'SET_MEMBER_FAMILY', payload: response.data};
         yield put(nextAction);
     }catch (error){
