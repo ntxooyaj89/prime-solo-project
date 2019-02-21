@@ -35,9 +35,10 @@ router.get('/:id', (req, res) => {
 
 // this gets the member's family when the user clicked on.
 router.get('/:id/member-family', (req, res) => {
-    const queryText = `SELECT * FROM "members" JOIN "family"
-                       ON "members".family_id = "family"."id"
-                       WHERE "family"."id" = $1`;
+    const queryText = `SELECT * FROM "members" JOIN "family_member"
+                       ON "members"."id" = "family_member"."member_id"
+                       WHERE "family_member"."family_id" IN (SELECT DISTINCT fm."family_id" FROM "family_member" as fm 
+                       JOIN "members" as m ON m."id" = fm."member_id" WHERE m."id" = $1) AND "members"."id" != $1;`;
     pool.query(queryText, [req.params.id]  )
     .then(result => {
         res.send(result.rows);

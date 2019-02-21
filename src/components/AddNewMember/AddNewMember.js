@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import swal from 'sweetalert';
+
+
 
 
 
@@ -127,10 +130,11 @@ class AddNewMember extends Component {
     addNewMember = event => {
         console.log('this is addNewMember');
         event.preventDefault();
+        
         const action = { type: 'ADD_MEMBER', payload: this.state.newMember}
         this.props.dispatch(action);
+        // window.location.reload();
         
-        window.location.reload();
     }
 
 
@@ -155,13 +159,15 @@ class AddNewMember extends Component {
                     <input type='text' placeholder="image" onChange={this.handleImage} />
                     {/* <input type='text' placeholder="family name" value={this.state.newMember.family_id} onChange={this.selectFamilyName}/> */}
                     <select onChange={this.selectFamilyName} value={this.state.newMember.family_id} >
-                        <option >Slect family name</option>
+                        <option >Select family name</option>
                         {this.props.reduxStore.familyReducer.nameOfFamily.map((family, i) => {
                             return <option key={i} value={family.id}>{family.family_name}</option>
                         })}
                     </select>
 
                     <button type="submit">Submit</button>
+                   
+                   
 
 
                 </form>

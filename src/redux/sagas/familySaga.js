@@ -1,5 +1,8 @@
 import axios from 'axios';
 import { put, takeEvery } from 'redux-saga/effects';
+import swal from 'sweetalert';
+
+
 
 
 // Saga get each indiviual family that's tie to the user.
@@ -45,6 +48,14 @@ function* addMember(action) {
         // call get family to update family with all the existing member
         const nextAction = { type: 'GET_FAMILY' };
         yield put(nextAction);
+        swal({
+            title: "Sucessful",
+            text: "Member added!",
+            icon: "success",
+            button: "Ok!",
+        });
+       
+        
     } catch (error) {
         console.log('there is error in addMember saga')
     }
@@ -60,6 +71,7 @@ function* deleteMember(action) {
         yield axios.delete(`/api/template/${memberId}`);
         const nextAction = { type: 'GET_FAMILY' }
         yield put(nextAction)
+        
     } catch (error) {
         console.log('error in delete saga', error);
     }
@@ -73,6 +85,7 @@ function* getMemberDetail(action){
         const nextAction = {type: 'SET_MEMBER_DETAIL', payload: response.data};
         yield put(nextAction);
     } catch (error) {
+    
         console.log('this is get member detail saga error', error);
     }
 

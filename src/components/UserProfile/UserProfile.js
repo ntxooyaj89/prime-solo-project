@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
 import Card from '@material-ui/core/Card';
 import { CardActionArea, CardMedia, CardContent, Typography, CardActions } from '@material-ui/core';
@@ -7,15 +8,41 @@ import moment from 'moment';
 // import UserProfileFamily from './UserProfileFamily';
 import './UserProfile.css';
 
-
+const styles = theme => ({
+    card: {
+        display: 'flex',
+    },
+    details: {
+        display: 'flex',
+        flexDirection: 'column',
+    },
+    content: {
+        flex: '1 0 auto',
+    },
+    cover: {
+        width: 151,
+    },
+    controls: {
+        display: 'flex',
+        alignItems: 'center',
+        paddingLeft: theme.spacing.unit,
+        paddingBottom: theme.spacing.unit,
+    },
+    playIcon: {
+        height: 38,
+        width: 38,
+    },
+});
 class UserProfile extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
             add: true,
-            card: { maxWidth: '150', },
-            media: { height: '150', paddingTop: '56.25%' },
+            fullwidth: {width: '100%'},
+            card: { maxWidth: '150px', },
+            media: { height: '150px', paddingTop: '56.25%' },
+            fullmedia: { height: '150px', width: '150px' },
             actions: { display: 'flex' },
             expand: { transform: 'rotate(0deg)', marginLeft: 'auto' },
             expandOpen: { transform: 'rotate(180deg)' }
@@ -56,6 +83,7 @@ class UserProfile extends Component {
     
 
     render() {
+        const { classes, theme } = this.props;
         return (
             <div>
 
@@ -63,18 +91,22 @@ class UserProfile extends Component {
                 {/* {JSON.stringify(this.props.reduxStore.familyReducer.memberFamily)} */}
                 {this.props.reduxStore.familyReducer.memberDetail.map(person => {
                     return (
-                        <div className="image" key={person.id}>
+                        <div className={classes.card} key={person.id}>
                             <Card className={this.state.card}>
-                                <CardActionArea>
+                                
+                                <CardActionArea className={classes.details}>
+ 
+                                    
                                     <CardMedia
                                         component="img"
-                                        className={this.state.media}
+                                        className={this.state.fullmedia}
                                         alt="person of family"
                                         height="250"
+                                        width="250"
                                         image={person.image}
                                         onClick={this.selectMember}
                                     />
-                                    <CardContent>
+                                    <CardContent className={classes.content}>
                                     <Typography gutterBottom variant="h5" component="h2">
                                         {person.first_name}
                                     </Typography>
@@ -104,7 +136,6 @@ class UserProfile extends Component {
                                     </Typography>
 
                                    </CardContent>
-
                                 </CardActionArea>
                                 <CardActions>
 
@@ -120,7 +151,7 @@ class UserProfile extends Component {
                         </div>
                     )
                 })}
-                         
+                         <br></br>
            
 
                     {/* {JSON.stringify(this.props.match.params)} */}
@@ -190,39 +221,11 @@ class UserProfile extends Component {
 
 
 
-        )
-
-        
-                   
-
-                            
-
-                  
-                           
-                        
-                      
-                            
-                        
-                       
-                        
-
-
-
-
-
-
-                    
-                   
-            
-
-
-
-        
-    }
+        )}
 }
 
 const mapStateToProps = reduxStore => ({
     reduxStore: reduxStore
 })
 
-export default connect(mapStateToProps)(UserProfile);
+export default withStyles(styles, { withTheme: true })(connect(mapStateToProps)(UserProfile));

@@ -9,6 +9,7 @@ class FamilyTree extends Component {
         super(props);
         this.state = {
             newFamiy: {
+                family_name:''
                 
             }
         };
@@ -30,10 +31,12 @@ class FamilyTree extends Component {
 
     selectFamily = (event) => {
         console.log('this is select Family');
-        this.setState({
-            family: event.target.value
+        // this.setState({
+        //     ...this.state.newFamily,
+        //     family_name: event.target.value,
            
-        })
+        // })
+        this.props.history.push(`/family-profile/${event.target.value}`)
 
     }
 
@@ -56,17 +59,19 @@ class FamilyTree extends Component {
 
 
 
-            <form>
+            <form onSubmit={this.handleUserFamily}>
                 {JSON.stringify(this.props.reduxStore.familyReducer.myFamilyName)}
 
-                <select onChange={this.handleUserFamily} >
+                <select onChange={this.selectFamily} >
                     <option value="">Select Family</option>
                     {this.props.reduxStore.familyReducer.myFamilyName.map((member, i) => {
-                        return <option key={i} value={member.id}>{member.family_name}</option>
+                        return <option key={i} value={member.id} >{member.family_name}</option>
                     })}
                 </select>
 
-            </form>
+                <button type="submit" >Submit</button>
+
+            </form >
 
 
 
