@@ -61,7 +61,7 @@ class FamilyTree extends Component {
 
 
             <form className="color" onSubmit={this.handleUserFamily}>
-                {JSON.stringify(this.props.reduxStore.familyReducer.myFamilyName)}
+                {/* {JSON.stringify(this.props.reduxStore.familyReducer.myFamilyName)} */}
 
                 <select onChange={this.selectFamily} >
                     <option >Select Family</option>

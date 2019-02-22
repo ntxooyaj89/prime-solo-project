@@ -146,7 +146,7 @@ class AddNewMember extends Component {
            
             <div>
                 {/* {JSON.stringify(this.props.reduxStore.familyReducer.myFamilyName)} */}
-                {JSON.stringify(this.props.reduxStore.familyReducer.nameOfFamily)}
+                {/* {JSON.stringify(this.props.reduxStore.familyReducer.nameOfFamily)} */}
 
                 <form onSubmit={this.addNewMember}>
                     <header className="header">Add A New Member</header>
