@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
+// import './FamilyTrees.css'
 
 
 
@@ -45,7 +46,7 @@ class FamilyTree extends Component {
         // this.setState({
         //     family: event.target.value,
         // });
-        this.props.history.push(`/family-profile/${event.target.value}`);
+        this.props.history.push(`/family-profile/`);
     }
 
     
@@ -59,13 +60,13 @@ class FamilyTree extends Component {
 
 
 
-            <form onSubmit={this.handleUserFamily}>
+            <form className="color" onSubmit={this.handleUserFamily}>
                 {JSON.stringify(this.props.reduxStore.familyReducer.myFamilyName)}
 
                 <select onChange={this.selectFamily} >
-                    <option value="">Select Family</option>
-                    {this.props.reduxStore.familyReducer.myFamilyName.map((member, i) => {
-                        return <option key={i} value={member.id} >{member.family_name}</option>
+                    <option >Select Family</option>
+                    {this.props.reduxStore.familyReducer.myFamilyName.map((name, i) => {
+                        return <option key={i} value={name.id}>{name.family_name}</option>
                     })}
                 </select>
 

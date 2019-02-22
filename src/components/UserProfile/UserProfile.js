@@ -33,6 +33,8 @@ const styles = theme => ({
         width: 38,
     },
 });
+
+
 class UserProfile extends Component {
 
     constructor(props) {
@@ -144,7 +146,7 @@ class UserProfile extends Component {
                                     <Button size="small" color="primary" onClick={this.handelUpdate}>We've met</Button>
 
 
-                                </CardActions>
+                                </CardActions>  
 
 
                             </Card>
