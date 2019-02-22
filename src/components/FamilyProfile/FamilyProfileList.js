@@ -29,13 +29,13 @@ class FamilyProfileList extends Component {
         const action = {
             type: 'DELETE_MEMBER',
             payload: { memberId: this.props.member.id }
+           
         }
-
         this.props.dispatch(action);
         
         // swal("Deleted!", "member is deleted", "success");
         window.location.reload();
-        swal("Deleted!", "member is deleted", "success");
+        
     }
 
     // send user to the clicked on member's family.

@@ -33,6 +33,8 @@ const styles = theme => ({
         width: 38,
     },
 });
+
+
 class UserProfile extends Component {
 
     constructor(props) {
@@ -77,6 +79,22 @@ class UserProfile extends Component {
         // clicking this send user to the member's family.
         this.props.history.push(`/user-profile/${this.props.member.id}`);
     }
+
+
+    // handelDelete = (event) => {
+    //     console.log('this is in handle delete user-profile');
+    //     const action = {
+    //         type: 'DELETE_MEMBER',
+    //         payload: { memberId: event.target.value }
+
+    //     }
+    //     this.props.dispatch(action);
+
+    //     // swal("Deleted!", "member is deleted", "success");
+    //     window.location.reload();
+    // }
+
+
 
     
 
@@ -140,11 +158,11 @@ class UserProfile extends Component {
                                 <CardActions>
 
 
-                                    <Button size="small" color="primary" onClick={this.handelDelete}>Delete Member</Button>
+                                    <Button size="small" color="primary" value={person.id} onClick={this.handelDelete}>Delete Member</Button>
                                     <Button size="small" color="primary" onClick={this.handelUpdate}>We've met</Button>
 
 
-                                </CardActions>
+                                </CardActions>  
 
 
                             </Card>
