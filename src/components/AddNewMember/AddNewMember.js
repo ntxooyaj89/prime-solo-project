@@ -1,10 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import swal from 'sweetalert';
+import ReactFilestack from 'filestack-react';
 
+const FILESTACK_API_KEY = process.env.REACT_APP_FILESTACK_API_KEY;
 
-
-
+const basicOptions = {
+    accept: 'image/*',
+    fromSources: ['local_file_system'],
+    maxSize: 1024 * 1024,
+    maxFiles: 1,
+}
 
 class AddNewMember extends Component {
 
@@ -100,7 +106,7 @@ class AddNewMember extends Component {
 
 
     // this handle the image of the member
-    handleImage = event => {
+    handleImage = (event) => {
         this.setState({
             newMember: {
                 ...this.state.newMember,
@@ -109,6 +115,9 @@ class AddNewMember extends Component {
         })
         
 
+    }
+    onError = (error) => {
+        console.log('this is error in onError');
     }
     
     // this select the name of which family to insert the member into.
@@ -157,6 +166,19 @@ class AddNewMember extends Component {
                     <input type='text' placeholder="gender" onChange={this.handleGender} />
                     <input type='text' placeholder="description" onChange={this.handleDescribtion} />
                     <input type='text' placeholder="image" onChange={this.handleImage} />
+                    <div>
+                        <ReactFilestack
+                            apikey={FILESTACK_API_KEY}
+                            buttonText="Upload Photo"
+                            buttonClass="btn"
+                            name="image"
+                            options={basicOptions}
+                            onSuccess={this.handleImage}
+                            onError={this.onError}
+                        />
+
+                    </div>
+                    
                     {/* <input type='text' placeholder="family name" value={this.state.newMember.family_id} onChange={this.selectFamilyName}/> */}
                     <select onChange={this.selectFamilyName} value={this.state.newMember.family_id} >
                         <option >Select family name</option>

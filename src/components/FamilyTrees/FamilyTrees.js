@@ -66,7 +66,7 @@ class FamilyTree extends Component {
                 <select onChange={this.selectFamily} >
                     <option >Select Family</option>
                     {this.props.reduxStore.familyReducer.myFamilyName.map((name, i) => {
-                        return <option key={i} value={name.id}>{name.family_name}</option>
+                        return <option key={i} value={name.id} >{name.family_name}</option>
                     })}
                 </select>
 
