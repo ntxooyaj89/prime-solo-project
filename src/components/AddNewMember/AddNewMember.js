@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import swal from 'sweetalert';
 import ReactFilestack from 'filestack-react';
 
-const FILESTACK_API_KEY = process.env.REACT_APP_FILESTACK_API_KEY;
+// const FILESTACK_API_KEY = process.env.REACT_APP_FILESTACK_API_KEY;
 
-const basicOptions = {
-    accept: 'image/*',
-    fromSources: ['local_file_system'],
-    maxSize: 1024 * 1024,
-    maxFiles: 1,
-}
+// const basicOptions = {
+//     accept: 'image/*',
+//     fromSources: ['local_file_system'],
+//     maxSize: 1024 * 1024,
+//     maxFiles: 1,
+// }
 
 class AddNewMember extends Component {
 
@@ -150,6 +150,8 @@ class AddNewMember extends Component {
 
     render() {
 
+        console.log('This is the api key!!!!', process.env.REACT_APP_FILESTACK_API_KEY)
+
         return (
 
            
@@ -165,20 +167,19 @@ class AddNewMember extends Component {
                     <input type='date' placeholder="date of birth" onChange={this.handleBirthday} />
                     <input type='text' placeholder="gender" onChange={this.handleGender} />
                     <input type='text' placeholder="description" onChange={this.handleDescribtion} />
-                    {/* <input type='text' placeholder="image" onChange={this.handleImage} /> */}
-                    <div>
+                    <input type='text' placeholder="image" onChange={this.handleImage} />
+                    {/* <div>
                         <ReactFilestack
                             apikey={FILESTACK_API_KEY}
                             buttonText="Upload Photo"
                             buttonClass="btn"
                             name="image"
                             options={basicOptions}
-                            onSuccess={this.handleImage}
+                            onClick={this.handleImage}
                             onError={this.onError}
                         />
 
-                    </div>
-                    
+                    </div> */}
                     {/* <input type='text' placeholder="family name" value={this.state.newMember.family_id} onChange={this.selectFamilyName}/> */}
                     <select onChange={this.selectFamilyName} value={this.state.newMember.family_id} >
                         <option >Select family name</option>
