@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+// import './LoginPage.css';
 
 class LoginPage extends Component {
   state = {
@@ -31,7 +32,7 @@ class LoginPage extends Component {
 
   render() {
     return (
-      <div>
+      <div >
         {this.props.errors.loginMessage && (
           <h2
             className="alert"
@@ -71,9 +72,16 @@ class LoginPage extends Component {
               name="submit"
               value="Log In"
             />
+            <button
+              type="button"
+              className="link-button"
+              onClick={() => { this.props.dispatch({ type: 'SET_TO_REGISTER_MODE' }) }}
+            >
+              Register
+          </button>
           </div>
         </form>
-        <center>
+        {/* <center>
           <button
             type="button"
             className="link-button"
@@ -81,7 +89,7 @@ class LoginPage extends Component {
           >
             Register
           </button>
-        </center>
+        </center> */}
       </div>
     );
   }

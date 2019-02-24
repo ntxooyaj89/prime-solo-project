@@ -1,6 +1,12 @@
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0px;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   margin: 0;
+   padding: 0;
+   /* this is to display the image */
+   background-image: url("../../images/family.jpg");
+   background-position: center; /* Center the image */
+   background-repeat: no-repeat; /* Do not repeat the image */
+   background-size: cover;
 }
 
 .alert {
@@ -27,7 +33,7 @@ input {
   border-radius: 4px;
   color: #f8f8f8;
   min-height: 50px;
-  min-width: 100px;
+  min-width: 90px;
   outline:0;
   cursor: pointer;
 }
@@ -38,12 +44,19 @@ input {
 
 /* This line makes the "Register" and "Login" buttons look like links */
 .link-button {
-    background:none;
+    /* background:none;
     color:inherit;
     border:none;
     padding:0;
     font: inherit;
     outline:0;
     border-bottom:1px solid #444; 
-    cursor: pointer;
+    cursor: pointer; */
+    background-color: #307502;
+    border-radius: 4px;
+    color: #f8f8f8;
+    min-height: 50px;
+    min-width: 90px;
+     outline:0;
+     cursor: pointer;
 }
