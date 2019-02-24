@@ -165,7 +165,7 @@ class AddNewMember extends Component {
                     <input type='date' placeholder="date of birth" onChange={this.handleBirthday} />
                     <input type='text' placeholder="gender" onChange={this.handleGender} />
                     <input type='text' placeholder="description" onChange={this.handleDescribtion} />
-                    <input type='text' placeholder="image" onChange={this.handleImage} />
+                    {/* <input type='text' placeholder="image" onChange={this.handleImage} /> */}
                     <div>
                         <ReactFilestack
                             apikey={FILESTACK_API_KEY}
