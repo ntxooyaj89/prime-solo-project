@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import swal from 'sweetalert';
-import ReactFilestack from 'filestack-react';
+import './AddNewMember.css';
+// import ReactFilestack from 'filestack-react';
 
 // const FILESTACK_API_KEY = process.env.REACT_APP_FILESTACK_API_KEY;
 
@@ -159,7 +160,7 @@ class AddNewMember extends Component {
                 {/* {JSON.stringify(this.props.reduxStore.familyReducer.myFamilyName)} */}
                 {/* {JSON.stringify(this.props.reduxStore.familyReducer.nameOfFamily)} */}
 
-                <form onSubmit={this.addNewMember}>
+                <form className="form" onSubmit={this.addNewMember}>
                     <header className="header">Add A New Member</header>
 
                     <input type='text' placeholder="first name" onChange={this.handleFirstName} />

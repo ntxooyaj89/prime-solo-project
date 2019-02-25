@@ -49,7 +49,7 @@ function* addMember(action) {
         const nextAction = { type: 'GET_FAMILY' };
         yield put(nextAction);
         swal({
-            title: "Sucessful",
+            title: "Successful",
             text: "Member added!",
             icon: "success",
             button: "Ok!",

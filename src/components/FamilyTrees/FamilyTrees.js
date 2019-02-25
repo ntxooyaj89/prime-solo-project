@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-// import './FamilyTrees.css'
+import './FamilyTrees.css'
 
 
 
@@ -62,6 +62,7 @@ class FamilyTree extends Component {
 
             <form className="color" onSubmit={this.handleUserFamily}>
                 {/* {JSON.stringify(this.props.reduxStore.familyReducer.myFamilyName)} */}
+                <header>Select a Family</header>
 
                 <select onChange={this.selectFamily} >
                     <option >Select Family</option>
