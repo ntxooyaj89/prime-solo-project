@@ -7,6 +7,8 @@ body {
    background-position: center; /* Center the image */
    background-repeat: no-repeat; /* Do not repeat the image */
    background-size: cover;
+   /* this makes to picture cover the whole home page. */
+   min-height: 100vh;
    /* background-size: stretch; */
 }
 
