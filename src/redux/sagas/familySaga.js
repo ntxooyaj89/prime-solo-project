@@ -57,7 +57,7 @@ function* addMember(action) {
        
         
     } catch (error) {
-        console.log('there is error in addMember saga')
+        console.log('there is error in addMember saga', error)
     }
 
 }

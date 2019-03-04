@@ -1,15 +1,36 @@
-# Prime Project
-This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
+# Family Circle (Prime solo project)
+ This application allow user to connect them with their family members even if they all lived in a diffrent states or part of the world. 
 
-We **STRONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
+# Technologies used to create this App.
 
-## Download (Don't Clone) This Repository
+1. React
+2. Redux
+3. Passport
+4. node.js
+5. Saga
+6. moment.js
+7. Postgre SQL
+8. CSS
+9. Material UI
 
-* Don't Fork or Clone. Instead, click the `Clone or Download` button and select `Download Zip`.
-* Unzip the project and start with the code in that folder.
-* Create a new GitHub project and push this code to the new repository.
+## Installing
 
-## Prerequisites
+1. Download this project.
+2. npm install
+3. npm run server
+4. npm run client
+
+# Next Steps
+
+There is many features that I did not get to within the two weeks. I would like to add the following features,
+
+1. uploading images
+2. updating members brief description and images.
+3. Allow new user to register their family.
+4. Adding new family instead of just a member.
+
+
+
 
 Before you get started, make sure you have the following software installed on your computer:
 
