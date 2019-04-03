@@ -81,18 +81,18 @@ class UserProfile extends Component {
     }
 
 
-    // handelDelete = (event) => {
-    //     console.log('this is in handle delete user-profile');
-    //     const action = {
-    //         type: 'DELETE_MEMBER',
-    //         payload: { memberId: event.target.value }
+    handelDelete = (event) => {
+        console.log('this is in handle delete user-profile');
+        const action = {
+            type: 'DELETE_MEMBER',
+            payload: { memberId: event.target.value }
 
-    //     }
-    //     this.props.dispatch(action);
+        }
+        this.props.dispatch(action);
 
-    //     // swal("Deleted!", "member is deleted", "success");
-    //     window.location.reload();
-    // }
+        // swal("Deleted!", "member is deleted", "success");
+        window.location.reload();
+    }
 
 
 

@@ -168,15 +168,3 @@ router.post('/', (req, res) => {
 
 module.exports = router;
 
-`SELECT * FROM "family" JOIN "members"
-ON "members"."family_id" = family."id"; `
-
-    // `SELECT * FROM "members";`
-
-    // authorization 
-        // Junction table (one person in multiple families)
-        // pool.query(`SELECT * FROM "family" JOIN "members"
-        //             ON "members"."id" = family_member."member_id"
-        //             JOIN "family" ON "family"."id" = "family_member"."family_id"
-        //             WHERE family."id" = $1 
-        //             ORDER BY "members"."id"`, [req.params.id])
