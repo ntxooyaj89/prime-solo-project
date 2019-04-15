@@ -1,5 +1,6 @@
 # Family Circle (Prime solo project)
- This application allow user to connect them with their family members even if they all lived in a diffrent states or part of the world. 
+
+Having family members that lived all over the world can be hard to meet and learn about each other. This application allow user to create members and share the application with their childrens. Allowing their children to learn more about each individual members and the member's media family. 
 
 # Technologies used to create this App.
 
